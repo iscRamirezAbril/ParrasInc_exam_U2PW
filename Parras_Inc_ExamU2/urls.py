@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from apps.Employees.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('index/', index), # This is the path to the index.html file
+    path('login/', login), # This is the path to the login.html file
 ]
