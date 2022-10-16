@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config # De la librería decouple importamos la función config para leer el archivo .env
+from django.contrib import messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b8z=ko77@e@%f41bs7y1ifsx71y790do1fzf@@o#1(-ks+z%oj'
+SECRET_KEY = config('SECRET_KEY') # Leemos la variable SECRET_KEY del archivo .env
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -73,12 +75,25 @@ WSGI_APPLICATION = 'Parras_Inc_ExamU2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# Cadena de conexión a la base de datos de SQL Server
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mssql', # Cambiamos el motor de la base de datos a mssql
+        'NAME': config('SQL_DB'), # Nombre de la base de datos
+        'USER': config('SQL_USER'), # Usuario de la base de datos
+        'PASSWORD': config('SQL_PASSWORD'), # Contraseña del usuario de la base de datos
+        'HOST': config('SQL_INSTANCE'), # Nombre del servidor de la base de datos y la instancia
+        'OPTIONS': {'driver': 'ODBC Driver 17 for SQL Server', }, # Driver de conexión a la base de datos
     }
 }
+
+# Datos de conexión a la base de datos que vienen por defecto en el proyecto
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
