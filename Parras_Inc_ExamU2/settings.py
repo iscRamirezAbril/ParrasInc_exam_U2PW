@@ -32,7 +32,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+# |=====| Default Django apps |=====|
+BASE_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+# |=====| Created Apps |=====|
+LOCAL_APPS = [
+    'apps.Employees',
+    'apps.Pieces',
+    'apps.Production',
+    'apps.Warehouse',
+]
+
+# |=====| ALL APPS |=====|
+INSTALLED_APPS = BASE_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
