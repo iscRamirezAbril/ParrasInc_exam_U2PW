@@ -1,18 +1,23 @@
 from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+
+
 from django.contrib.auth.forms import UserCreationForm
 from .forms import *
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate, login, logout
 
+# |==========| DECORADORES |==========| #
+from django.contrib.auth.decorators import *
+from apps.Employees.decorators import *
 
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
-
+@unauthenticated_user
 def Employee_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -24,7 +29,7 @@ def Employee_login(request):
             login(request, user)
             text = 'Welcome back ' + request.user.employee.empFirstName
             messages.success(request, text)
-            return redirect('dashboard_admin')
+            return redirect('welcomePage')
 
         else:
             messages.info(request, 'Username OR password is incorrect')
@@ -61,14 +66,27 @@ def register(request):
     return render(request, 'register.html', context)
 
 
+# Función para cerrar sesión
 def Emp_logout(request):
     logout(request)
     return redirect('emp_login')
 
 
+# Página de inicio
+def welcomePage(request):
+    return render(request, 'Employees/welcomePage.html')
+
+
+# Para acceder a esta página, se necesita estar logueado
+@login_required(login_url='emp_login')
+# Para acceder a esta página, se necesita ser administrador
+@allowed_users(allowed_roles=['admin'])
 def dashboard_admin(request):
     return render(request, 'Employees/dashboard_admin.html')
 
 
+# Para acceder a esta página, se necesita estar logueado
+@login_required(login_url='emp_login')
+@allowed_users(allowed_roles=['employee'])
 def dashboard_employee(request):
     return render(request, 'Employees/dashboard_employee.html')

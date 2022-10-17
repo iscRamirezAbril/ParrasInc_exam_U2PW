@@ -4,7 +4,7 @@ from apps.Employees.views import *
 
 urlpatterns = [
     # Por terminar #
-    path('', index, name='home'),
+    path('', index, name='index'),
     # Listo #
     path('login/', Employee_login, name = "emp_login"), # This is the path to the login.html file
     # Listo #
@@ -16,8 +16,10 @@ urlpatterns = [
     # Por trabajar (Solo Administradores) #
     path('list/', index), # This is the path to the signup.html file
     
-    # Por trabajar (Solo Administradores) #
+    path('welcomePage/', welcomePage, name = 'welcomePage'),
+    # Dashboard de administradores (Solo Administradores) #
     path('dashboard_admin/', dashboard_admin, name = 'dashboard_admin'), # This is the path to the signup.html file);
+    # Dashboard de empleados #
     path('dashboard_employee/', dashboard_employee, name = 'dashboard_employee'), # This is the path to the signup.html file);
 
 ]
