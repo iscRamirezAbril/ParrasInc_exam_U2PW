@@ -8,7 +8,7 @@ urlpatterns = [
     # Listo #
     path('login/', Employee_login, name = "emp_login"), # This is the path to the login.html file
     # Listo #
-    path('register/', register), # This is the path to the signup.html file
+    path('register/', register, name = 'emp_register'), # This is the path to the signup.html file
     # Por modificar #
     path('profile/', index), # This is the path to the signup.html file
     # Listo #
