@@ -1,0 +1,61 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+  <div class="col"></div>
+  <div class="col">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col text-center">
+                    <h2 class="card-title">Formulario de registro</h2>
+                    <br>
+                </div>
+                <div class="col"></div>
+            </div>
+            <form class="row g-3" method="POST">
+                {% csrf_token %}
+                {{ form.errors }}
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="col">
+                        <label for="inputEmail4" class="form-label">Nombre(s)</label>
+                        {{ form.first_name }}
+                        <br>
+                      </div>
+                      <div class="col">
+                        <label for="inputPassword4" class="form-label">Apellidos</label>
+                        {{ form.last_name }}
+                        <br>
+                      </div>
+                      <div class="col-12">
+                        <label for="inputAddress" class="form-label">Email</label>
+                        {{form.username}}
+                        <br>
+                    </div>
+                      <div class="row">
+                        <div class="col-6">
+                            <label for="inputAddress2" class="form-label">Contraseña</label>
+                            {{ form.password1 }}
+                        </div>
+                          <div class="col-6">
+                            <label for="inputAddress2" class="form-label">Confirmar contraseña</label>
+                            {{ form.password2 }}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col"></div>
+                        <div class="col-2">
+                            <br>
+                            <button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
+                        </div>
+                        <div class="col"></div>
+                      </div>
+                </div>
+                <div class="col-2"></div>
+              </form>        
+            </div>
+      </div>
+  </div>
+  <div class="col"></div>
+{% endblock %}
