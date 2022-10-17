@@ -60,6 +60,15 @@ def register(request):
     context = {'form': form}
     return render(request, 'register.html', context)
 
+
 def Emp_logout(request):
     logout(request)
     return redirect('emp_login')
+
+
+def dashboard_admin(request):
+    return render(request, 'Employees/dashboard_admin.html')
+
+
+def dashboard_employee(request):
+    return render(request, 'Employees/dashboard_employee.html')
