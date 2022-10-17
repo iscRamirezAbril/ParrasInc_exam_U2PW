@@ -24,7 +24,7 @@ def Employee_login(request):
             login(request, user)
             text = 'Welcome back ' + request.user.employee.empFirstName
             messages.success(request, text)
-            return redirect('home')
+            return redirect('dashboard_admin')
 
         else:
             messages.info(request, 'Username OR password is incorrect')
