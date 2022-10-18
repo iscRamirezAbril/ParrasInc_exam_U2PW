@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 from django.contrib.auth.models import User
+from datetime import datetime
 
 # |========================================|
 # |==========| EMPLOYEES MODELS |==========|
@@ -55,6 +56,10 @@ class Worker(models.Model):
     def __str__(self):
         return str(self.workerEmployee)
 
+def default_start_time():
+    now = datetime.now().strftime('%H:%M:%S')
+    return now
+
 # |----------| MODEL #5: Assistence |----------|
 class Assistence(models.Model):
     assistDate=         models.DateField(auto_now_add=True, null = False)
@@ -64,7 +69,7 @@ class Assistence(models.Model):
     
     # -----> Foreign Keys <----- #
     # Foreign Key that points to the Worker model
-    assistWorker=        models.ForeignKey(Worker, on_delete=models.CASCADE, null = False)
+    assistWorker=        models.ForeignKey(Employee, on_delete=models.CASCADE, null = False)
 
     def __str__(self):
         return str(self.assistWorker)

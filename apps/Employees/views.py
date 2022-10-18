@@ -1,3 +1,4 @@
+from ast import Assign
 from multiprocessing import context
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -106,9 +107,10 @@ def worker_List(request):
 
 current_week = date.today().isocalendar()[1] 
 
+
 # REPORTE DE ASISTENCIA DEL TRABAJADOR ACTUAL #
-def worker_Assistence(request):
-    worker_Assistence = Assistence.objects.filter(assistDate__week=current_week).filter(assistWorker = request.user.pk)
+def worker_Assistence(request):        
+    worker_Assistence = Assistence.objects.filter(assistDate__week=current_week).filter(assistWorker = request.user.employee.pk)
     monday=False
     tuesday=False
     wednesday=False
@@ -131,7 +133,8 @@ def worker_Assistence(request):
             saturday=day
         if day.assistDate.weekday() == 6:
             sunday=day
-    context = {'worker_Assistence': 'active',
+    worker_assistence = {'worker_Assistence': 'active',
+               'worker' : request.user.employee,
                'monday' : monday, 
                'tuesday' : tuesday, 
                'wednesday' : wednesday, 
@@ -140,4 +143,13 @@ def worker_Assistence(request):
                'saturday' : saturday,
                'sunday' : sunday,
                }
+    
+    # Se renderiza el archivo 'stadium_list.html' y se le envía el diccionario creado
+    return render(request, 'Employees/worker_assistence.html', worker_assistence)
+
+
+# REPORTE DE ASISTENCIA DEL TODOS LOS EMPLEADOS #
+def assistence_list(request):
+    context = {'assistence_list': Assistence.objects.all()} # Se crea un diccionario con la lista de estadios
+    # Se renderiza el archivo 'stadium_list.html' y se le envía el diccionario creado
     return render(request, 'Employees/worker_assistence.html', context)

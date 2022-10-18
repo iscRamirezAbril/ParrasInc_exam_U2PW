@@ -4,12 +4,7 @@
 
     <div class="row">
         <br>
-        <h1 class="text-center">Reporte de asistencia de la semana</h1>
-    </div>
-
-    <div class="d-grid gap-2 col-2 mx-auto">
-        <a class="btn btn-success" type="button">Registrar entrada</a>
-        <a class="btn btn-danger" type="button">Registrar salida</a>
+        <h1 class="text-center">Mis asistencias de la semana</h1>
     </div>
 
     <br>
@@ -58,5 +53,56 @@
             </div>
         </div>
     </div>
+    <br><br>
+
+    <h3 class="text-center"> Registrar asistencia y salida </h3>
+    <br>
+    <div class="d-grid gap-2 col-2 mx-auto">
+        <button class="btn btn-success d-block btn-user w-100 h" type="submit">Registrar entrada</button>
+        <button class="btn btn-danger d-block btn-user w-100 h" type="submit">Registrar salida</button>
+    </div>
+
+    <div class="container-fluid">
+        <br>
+        <br>
+        <div class="row">
+            <h1 class="text-center">Lista de asistencia de todos los empleados</h1>
+        </div>
+    
+        <br>
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                    <table class="table my-0" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th>Trabajador</th>
+                                <th>Horario de entrada</th>
+                                <th>Horario de salida</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for assist in worker_assistence %}
+                            <!-- Etiqueta "tr", la cual se emplea para definir cada fila de la tabla -->
+                            <tr>
+                                <td></td>
+                                <td>{{ assist.assistWorker }}</td>
+                                <td>{{ assist.assistEntrance }}</td>
+                                <td>{{ assist.assistOut }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr></tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        
 </div>
 {% endblock %}
