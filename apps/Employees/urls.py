@@ -23,6 +23,8 @@ urlpatterns = [
     # |===============| ADMINISTRACIÓN DE EMPLEADOS |===============| #
     # TRABAJANDO... #
     path('dashboard_Employees', dashboard_Employees, name = 'dashboard_Employees'),
-    
+    # LISTO #
     path('worker_List', worker_List, name = 'worker_List'),
+    # TRABAJANDO... #
+    path('worker_assistence', worker_Assistence , name = 'worker_assistence'),
 ]

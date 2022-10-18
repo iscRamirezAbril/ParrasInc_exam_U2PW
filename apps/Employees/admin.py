@@ -13,3 +13,7 @@ class JobPositionAdmin(admin.ModelAdmin):
 @admin.register(Worker)
 class WorkerAdmin(admin.ModelAdmin):
     list_display = ['id', 'workerSalary', 'workerEntrance', 'workerOut', 'workerEmployee', 'workerJobPosition']
+
+@admin.register(Assistence)
+class WorkerAssistenceAdmin(admin.ModelAdmin):
+    list_display = ['id', 'assistWorker', 'assistDate', 'assistEntrance', 'assistOut']

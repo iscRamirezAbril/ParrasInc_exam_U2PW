@@ -11,9 +11,7 @@
 
             <li class="nav-item"><a class="nav-link {{home}}" href={%url 'dashboard'%}><i class="fas fa-tachometer-alt"></i><span>Inicio</span></a></li>
 
-            {% if request.user.is_staff%}
             <li class="nav-item"><a class="nav-link {{org}}" href={%url 'dashboard_Employees'%}><i class="fas fa-id-card"></i><span>Sección de empleados</span></a></li>
-            {% endif %}
 
             <li class="nav-item"><a class="nav-link {{workerProfile}}"><i class="fas fa-user"></i><span>Sección de almacén</span></a></li>
             

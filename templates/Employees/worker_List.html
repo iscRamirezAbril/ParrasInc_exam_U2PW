@@ -1,61 +1,41 @@
 {% extends 'base/base.html' %}
-{% block content%}
+{% block content %}
+<div class="container-fluid">
 
-<div class="col"></div>
-<div class="col">
-    <br><br><br>
-    <div class="card">
+    <div class="row">
+        <br>
+        <h1 class="text-center">Reporte de asistencia</h1>
+    </div>
+    <br>
+    <div class="card shadow">
         <div class="card-body">
-            <div class="row">
-                <div class="col"></div>
-                <div class="col text-center">
-                    <br>
-                    <h2 class="card-title">Reporte de entradas y salidas (horarios)</h2>
-                    <br>
-                </div>
-                <div class="col"></div>
-            </div>
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-10">
-                    <!-- Etiqueta "table", la cual se encarga de coemnzar un apartado de tabla -->
-                    <table class="table table-sm table-borderless">
-                        <!-- Etiqueta "thead",  -->
-                        <thead class="font-weight-bold bg-secondary text-white">
-                            <!-- Etiqueta "tr", la cual se emplea para definir cada fila de la tabla -->
-                            <tr>
-                                <!-- Etiqueta "td", la cual se emplea para definir las cabeceras de una fila o de una columna de la tabla -->
-                                <td>Nombre(s)</td>
-                                <td>Posición de trabajo</td>
-                                <td>Salario</td>
-                                <td>Horario de entrada</td>
-                                <td>Horario de salida</td>
-                            </tr>
-                        </thead>
-
-                        <!-- Etiqueta "tbody", la cual se emplea para definir el cuerpo de la tabla -->
-                        <tbody>
-                            <!-- Etiqueta "for", la cual se emplea para iterar sobre una lista de objetos -->
-                            {% for worker in worker_List %}
-                            <!-- Etiqueta "tr", la cual se emplea para definir cada fila de la tabla -->
-                            <tr>
-                                <td>{{ worker.workerEmployee }}</td>
-                                <td>{{ worker.workerJobPosition }}</td>
-                                <td>{{ worker.workerSalary }}</td>
-                                <td>{{ worker.workerEntrance }}</td>
-                                <td>{{ worker.workerOut }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-1"></div>
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre(s)</th>
+                            <th>Posición de trabajo</th>
+                            <th>Salario</th>
+                            <th>Horario de entrada</th>
+                            <th>Horario de salida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for worker in worker_List %}
+                        <tr>
+                            <td>{{ worker.workerEmployee }}</td>
+                            <td>{{ worker.workerJobPosition }}</td>
+                            <td>{{ worker.workerSalary }}</td>
+                            <td>{{ worker.workerEntrance }}</td>
+                            <td>{{ worker.workerOut }}</td>
+                        </tr>
+                        {% endfor %}
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
             </div>
         </div>
-        <br><br>
     </div>
-    <br><br><br>
 </div>
-<div class="col"></div>
-
 {% endblock %}

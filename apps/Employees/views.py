@@ -9,6 +9,10 @@ from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate, login, logout
 
+
+from datetime import date
+from datetime import date
+
 # |==========| DECORADORES |==========| #
 from django.contrib.auth.decorators import *
 from apps.Employees.decorators import *
@@ -99,3 +103,41 @@ def employee_List(request):
 def worker_List(request):
     context = {'worker_List': Worker.objects.all()}
     return render(request, 'Employees/worker_List.html', context)
+
+current_week = date.today().isocalendar()[1] 
+
+# REPORTE DE ASISTENCIA DEL TRABAJADOR ACTUAL #
+def worker_Assistence(request):
+    worker_Assistence = Assistence.objects.filter(assistDate__week=current_week).filter(assistWorker = request.user.pk)
+    monday=False
+    tuesday=False
+    wednesday=False
+    thursday=False
+    friday=False
+    saturday=False
+    sunday=False
+    for day in worker_Assistence:
+        if day.assistDate.weekday() == 0:
+            monday=day
+        if day.assistDate.weekday() == 1:
+            tuesday=day
+        if day.assistDate.weekday() == 2:
+            wednesday=day
+        if day.assistDate.weekday() == 3:
+            thursday=day
+        if day.assistDate.weekday() == 4:
+            friday=day
+        if day.assistDate.weekday() == 5:
+            saturday=day
+        if day.assistDate.weekday() == 6:
+            sunday=day
+    context = {'worker_Assistence': 'active',
+               'monday' : monday, 
+               'tuesday' : tuesday, 
+               'wednesday' : wednesday, 
+               'thursday' : thursday,
+               'friday' : friday,
+               'saturday' : saturday,
+               'sunday' : sunday,
+               }
+    return render(request, 'Employees/worker_assistence.html', context)

@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+        <br>
+        <h1 class="text-center">Reporte de asistencia de la semana</h1>
+    </div>
+
+    <div class="d-grid gap-2 col-2 mx-auto">
+        <a class="btn btn-success" type="button">Registrar entrada</a>
+        <a class="btn btn-danger" type="button">Registrar salida</a>
+    </div>
+
+    <br>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miercoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sábado</th>
+                            <th>Domingo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Horas de entrada</strong></td>
+                            <td>{{monday.assistEntrance}}</td>
+                            <td>{{tuesday.assistEntrance}}</td>
+                            <td>{{wednesday.assistEntrance}}</td>
+                            <td>{{thursday.assistEntrance}}</td>
+                            <td>{{friday.assistEntrance}}</td>
+                            <td>{{saturday.assistEntrance}}</td>
+                            <td>{{sunday.assistEntrance}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Horas de salida</strong></td>
+                            <td>{{monday.assistOut}}</td>
+                            <td>{{tuesday.assistOut}}</td>
+                            <td>{{wednesday.assistOut}}</td>
+                            <td>{{thursday.assistOut}}</td>
+                            <td>{{friday.assistOut}}</td>
+                            <td>{{saturday.assistOut}}</td>
+                            <td>{{sunday.assistOut}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
