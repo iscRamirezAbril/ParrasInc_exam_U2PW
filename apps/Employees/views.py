@@ -73,20 +73,20 @@ def Emp_logout(request):
 
 
 # Página de inicio
+@login_required(login_url='emp_login')
 def welcomePage(request):
     return render(request, 'Employees/welcomePage.html')
 
 
 # Para acceder a esta página, se necesita estar logueado
 @login_required(login_url='emp_login')
-# Para acceder a esta página, se necesita ser administrador
-@allowed_users(allowed_roles=['admin'])
-def dashboard_admin(request):
-    return render(request, 'Employees/dashboard_admin.html')
+def dashboard(request):
+    return render(request, 'Employees/dashboard.html')
 
-
-# Para acceder a esta página, se necesita estar logueado
 @login_required(login_url='emp_login')
-@allowed_users(allowed_roles=['employee'])
-def dashboard_employee(request):
-    return render(request, 'Employees/dashboard_employee.html')
+@admin_only
+def dashboard_Employees(request):
+    return render(request, 'Employees/dashEmployees.html')
+
+def employee_List(request):
+    return render(request, 'Employees/employee_List.html')

@@ -1,20 +1,24 @@
 {% block vavbar %}
   {% load static %}
-  <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: #00171f;">
+  <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: #36A6BD;">
     <div class="container-fluid d-flex flex-column p-0">
         <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0">
             <div class="sidebar-brand-text mx-3"><span>Menu</span></div>
         </a>
         <hr class="sidebar-divider my-0">
         <ul class="navbar-nav text-light" id="accordionSidebar">
-            <li class="nav-item"><a class="nav-link {{home}}"><i class="fas fa-tachometer-alt"></i><span>Welcome</span></a></li>
-            <li class="nav-item"><a class="nav-link {{home}}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-            <li class="nav-item"><a class="nav-link {{workerProfile}}"><i class="fas fa-user"></i><span>Warehouse</span></a></li>
+            <li class="nav-item"><a class="nav-link {{home}}" href={%url 'welcomePage'%}><i class="fas fa-tachometer-alt"></i><span>Bienvenida</span></a></li>
+
+            <li class="nav-item"><a class="nav-link {{home}}" href={%url 'dashboard'%}><i class="fas fa-tachometer-alt"></i><span>Inicio</span></a></li>
+
             {% if request.user.is_staff%}
-            <li class="nav-item"><a class="nav-link {{org}}" href="#"><i class="fas fa-building"></i><span>Employees</span></a></li>
+            <li class="nav-item"><a class="nav-link {{org}}" href={%url 'dashboard_Employees'%}><i class="fas fa-id-card"></i><span>Sección de empleados</span></a></li>
             {% endif %}
-            <li class="nav-item"><a class="nav-link {{org}}" href="#"><i class="fas fa-id-card"></i><span>Providers</span></a></li>
-            <li class="nav-item"><a class="nav-link {{org}}" href="#"><i class="fas fa-users"></i><span>Production</span></a></li>
+
+            <li class="nav-item"><a class="nav-link {{workerProfile}}"><i class="fas fa-user"></i><span>Sección de almacén</span></a></li>
+            
+            <li class="nav-item"><a class="nav-link {{org}}" href="#"><i class="fas fa-building"></i><span>Producción</span></a></li>
+            
         </ul>
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
     </div>

@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        {% comment %} EL TÍTULO RESPECTO A LA PÁGINA {% endcomment %}
+        <title>{% block title %}{% endblock title %}</title> 
+        {% comment %} EL TÍTULO RESPECTO A LA PÁGINA {% endcomment %}
+        <meta name="description">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/fonts/fontawesome-all.min.css">
+        <link rel="stylesheet" href="/static/css/styles.min.css">
+        
+        <!-- Sweet alert 2 -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="/static/js/sweetAlert2.js"></script>
+        <!-- Sweet alert 2 -->
+    </head>
+
+    <body id="page-top">
+        <div id="wrapper">
+            <div class="d-flex flex-column" id="content-wrapper">
+                <div id="content">
+
+                    {% include 'base/navbar.html' %}
+                    {% block content %}
+                    {% endblock %}
+                </div>
+                {% include 'base/footer.html' %}
+            </div>
+        </div>
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/chart.min.js"></script>
+        <script src="/static/js/script.min.js"></script>
+    </body>
+    
+    </html>

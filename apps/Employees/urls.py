@@ -15,11 +15,14 @@ urlpatterns = [
     path('logout/', Emp_logout, name = 'emp_logout'), # This is the path to the signup.html file
     # Por trabajar (Solo Administradores) #
     path('list/', index), # This is the path to the signup.html file
-    
+    # MODIFICAR DISEÑO #
     path('welcomePage/', welcomePage, name = 'welcomePage'),
-    # Dashboard de administradores (Solo Administradores) #
-    path('dashboard_admin/', dashboard_admin, name = 'dashboard_admin'), # This is the path to the signup.html file);
-    # Dashboard de empleados #
-    path('dashboard_employee/', dashboard_employee, name = 'dashboard_employee'), # This is the path to the signup.html file);
-
+    # Listo #
+    path('dashboard', dashboard, name = 'dashboard'), # This is the path to the signup.html file);
+    
+    # |===============| ADMINISTRACIÓN DE EMPLEADOS |===============| #
+    # TRABAJANDO... #
+    path('dashboard_Employees', dashboard_Employees, name = 'dashboard_Employees'),
+    
+    path('employee_List', employee_List, name = 'employee_List'),
 ]
