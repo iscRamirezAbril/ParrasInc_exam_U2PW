@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 
 # Create your models here.
@@ -18,14 +19,14 @@ class Employee(models.Model):
     empUsername=        models.OneToOneField(User, on_delete=models.CASCADE, null = False)
     
     def __str__(self):
-        return self.empName
+        return self.empFirstName
 
 # |----------| MODEL #2: Department |----------|
 class Department(models.Model):
     deptName=           models.CharField(max_length=100)
     
     def __str__(self):
-        return self.name
+        return self.deptName
 
 # |----------| MODEL #3: job_Position |----------|
 class job_Position(models.Model):
@@ -34,8 +35,11 @@ class job_Position(models.Model):
     
     # -----> Foreign Keys <----- #
     # Foreign Key that points to the Department model
-    jpDepartment:       models.ForeignKey(Department, on_delete=models.CASCADE, null = False)
+    jpDepartment=       models.ForeignKey(Department, on_delete=models.CASCADE, null = False)
 
+    def __str__(self):
+        return self.jpName
+    
 # |----------| MODEL #4: Worker |----------|
 class Worker(models.Model):
     workerSalary=       models.DecimalField(max_digits=10, decimal_places=2, null = False)
@@ -49,12 +53,19 @@ class Worker(models.Model):
     workerJobPosition=  models.ForeignKey(job_Position, on_delete=models.CASCADE, null = False)
     
     def __str__(self):
-        return self.workerEmployee.empName
+        return str(self.workerEmployee)
 
+# |----------| MODEL #5: Assistence |----------|
 class Assistence(models.Model):
+    assistDate=         models.DateField(auto_now_add=True, null = False)
+    
     assistEntrance=     models.TimeField(null = False)
     assistOut=          models.TimeField(null = False)
     
     # -----> Foreign Keys <----- #
     # Foreign Key that points to the Worker model
-    assistWorkr=        models.ForeignKey(Worker, on_delete=models.CASCADE, null = False)
+    assistWorker=        models.ForeignKey(Worker, on_delete=models.CASCADE, null = False)
+
+    def __str__(self):
+        return str(self.assistWorker)
+        #return self.assistWorker

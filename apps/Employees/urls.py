@@ -24,5 +24,5 @@ urlpatterns = [
     # TRABAJANDO... #
     path('dashboard_Employees', dashboard_Employees, name = 'dashboard_Employees'),
     
-    path('employee_List', employee_List, name = 'employee_List'),
+    path('worker_List', worker_List, name = 'worker_List'),
 ]

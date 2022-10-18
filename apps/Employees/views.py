@@ -17,7 +17,7 @@ from apps.Employees.decorators import *
 def index(request):
     return render(request, 'index.html')
 
-@unauthenticated_user
+# @unauthenticated_user
 def Employee_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -73,20 +73,29 @@ def Emp_logout(request):
 
 
 # Página de inicio
-@login_required(login_url='emp_login')
+#@login_required(login_url='emp_login')
 def welcomePage(request):
     return render(request, 'Employees/welcomePage.html')
 
 
 # Para acceder a esta página, se necesita estar logueado
-@login_required(login_url='emp_login')
+#@login_required(login_url='emp_login')
 def dashboard(request):
     return render(request, 'Employees/dashboard.html')
 
-@login_required(login_url='emp_login')
-@admin_only
+#@login_required(login_url='emp_login')
+# @admin_only
 def dashboard_Employees(request):
     return render(request, 'Employees/dashEmployees.html')
 
+
 def employee_List(request):
-    return render(request, 'Employees/employee_List.html')
+    context = {'employee_List': Employee.objects.all()} # Se crea un diccionario con la lista de los empleados
+    return render(request, 'Employees/employee_List.html', context)
+
+
+# REPORTE DE ASISTENCIA DE TRABAJADORES #
+#@login_required(login_url='emp_login')
+def worker_List(request):
+    context = {'worker_List': Worker.objects.all()}
+    return render(request, 'Employees/worker_List.html', context)

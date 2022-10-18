@@ -10,57 +10,46 @@
                 <div class="col"></div>
                 <div class="col text-center">
                     <br>
-                    <h2 class="card-title">Tabla de empleados</h2>
+                    <h2 class="card-title">Reporte de entradas y salidas (horarios)</h2>
                     <br>
                 </div>
                 <div class="col"></div>
             </div>
             <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8">
+                <div class="col-1"></div>
+                <div class="col-10">
                     <!-- Etiqueta "table", la cual se encarga de coemnzar un apartado de tabla -->
                     <table class="table table-sm table-borderless">
                         <!-- Etiqueta "thead",  -->
-                        <thead class="font-weight-bold">
+                        <thead class="font-weight-bold bg-secondary text-white">
                             <!-- Etiqueta "tr", la cual se emplea para definir cada fila de la tabla -->
                             <tr>
                                 <!-- Etiqueta "td", la cual se emplea para definir las cabeceras de una fila o de una columna de la tabla -->
                                 <td>Nombre(s)</td>
-                                <td>Apellido(s)</td>
-                                <td>Fecha de nacimiento</td>
-                                <td>Nombre de usuario</td>
+                                <td>Posición de trabajo</td>
+                                <td>Salario</td>
+                                <td>Horario de entrada</td>
+                                <td>Horario de salida</td>
                             </tr>
                         </thead>
 
                         <!-- Etiqueta "tbody", la cual se emplea para definir el cuerpo de la tabla -->
                         <tbody>
                             <!-- Etiqueta "for", la cual se emplea para iterar sobre una lista de objetos -->
-                            {% for employee in Employees %}
+                            {% for worker in worker_List %}
                             <!-- Etiqueta "tr", la cual se emplea para definir cada fila de la tabla -->
                             <tr>
-                                <td>{{ employee.empFirstName }}</td>
-                                <td>{{ player.employeeLastName }}</td>
-                                <td>{{ player.player_Birthdate }}</td>
-                                <td>{{ player.player_citizenShip }}</td>
-                                <td>{{ player.player_Status }}</td>
-
-                                <td>
-                                    <!-- Se agrega un botón que redirecciona al usuario -->
-                                    <a href="{% url 'player_Update' player.id %}" class="btn text-secondary px-8">
-                                        <i class="far fa-edit fa-lg"></i>
-                                    </a>
-                                </td>
-
-                                <td>
-                                    <a href="{% url 'player_Delete' player.id %}" class="btn text-danger px-8">
-                                        <i class="far fa-trash-alt fa-lg"></i>
-                                    </a>
+                                <td>{{ worker.workerEmployee }}</td>
+                                <td>{{ worker.workerJobPosition }}</td>
+                                <td>{{ worker.workerSalary }}</td>
+                                <td>{{ worker.workerEntrance }}</td>
+                                <td>{{ worker.workerOut }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
-                <div class="col-2"></div>
+                <div class="col-1"></div>
             </div>
         </div>
         <br><br>
