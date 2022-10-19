@@ -27,6 +27,6 @@ urlpatterns = [
     path('Employees/', include('apps.Employees.urls')),
     
     # path('Pieces/', include('apps.Pieces.urls')),
-    # path('Production/', include('apps.Production.urls')),
+    path('Production/', include('apps.Production.urls')),
     # path('Warehouse/', include('apps.Warehouse.urls')),
 ]

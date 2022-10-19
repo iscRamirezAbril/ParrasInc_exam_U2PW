@@ -5,7 +5,7 @@
 <div class="container-fluid">
 <div class="row">
     <br>
-    <h1 class="text-center">Administración de empleados</h1>
+    <h1 class="text-center text-info">Administración de empleados</h1>
 </div>
 <br>
 
@@ -21,7 +21,6 @@
           </a>
         </div>
 
-
         <div class="col-sm-4">
           <a class="card text-bg-secondary mb-3" type="button" href="{%url 'worker_assistence'%}">
             <div class="card-body">
@@ -33,13 +32,13 @@
         </div>
         
         <div class="col-sm-4">
-          <div class="card text-bg-warning mb-3">
+          <a class="card text-bg-warning mb-3" type="button" href="{%url 'worker_areaList'%}">
             <div class="card-body">
               <h5 class="card-title">Empleados por área</h5>
               <img src="https://cdn-icons-png.flaticon.com/512/2652/2652218.png" alt="" width="45" height="45" class="d-inline-block align-text-top"></i>
               <h2 class="text-right"><span>0</span></h2>
             </div>
-          </div>
+          </a>
         </div>
 
         <div class="col-sm-4">

@@ -1,0 +1,79 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+        <br>
+        <h1 h1 class="text-center text-info">Reporte de empleados por área</h1>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <br>
+        <h3 class="text-center">Reporte de empleados del área Automotríz</h3>
+    </div>
+
+    <br>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre del área</th>
+                            <th>Nombre del empleado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for areaAuto in auto %}
+                        <tr>
+                            <td>{{ areaAuto.areaWorkName }}</td>
+                            <td>{{ areaAuto.areaWorkEmployee }}</td>
+                        </tr>
+                        {% endfor %}
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <br><br>
+
+    <div class="row">
+        <br>
+        <h3 class="text-center">Reporte de empleados del área de Micro-Tecnología</h3>
+    </div>
+
+    <br>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre del área</th>
+                            <th>Nombre del empleado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for areaAuto in microTec %}
+                        <tr>
+                            <td>{{ areaAuto.areaWorkName }}</td>
+                            <td>{{ areaAuto.areaWorkEmployee }}</td>
+                        </tr>
+                        {% endfor %}
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

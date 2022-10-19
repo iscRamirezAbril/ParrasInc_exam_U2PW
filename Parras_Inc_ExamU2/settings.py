@@ -47,7 +47,7 @@ BASE_APPS = [
 LOCAL_APPS = [
     'apps.Employees',
     # 'apps.Pieces',
-    # 'apps.Production',
+    'apps.Production',
     # 'apps.Warehouse',
 ]
 

@@ -46,6 +46,7 @@ class Worker(models.Model):
     workerSalary=       models.DecimalField(max_digits=10, decimal_places=2, null = False)
     workerEntrance=     models.TimeField(null = False)
     workerOut=          models.TimeField(null = False)
+    worker_workHours=   models.DecimalField(max_digits=10, decimal_places=2, null = False)
     
     # -----> Foreign Keys <----- #
     # Foreign Key that points to the Employee model
@@ -59,6 +60,7 @@ class Worker(models.Model):
 def default_start_time():
     now = datetime.now().strftime('%H:%M:%S')
     return now
+
 
 # |----------| MODEL #5: Assistence |----------|
 class Assistence(models.Model):

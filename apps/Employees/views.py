@@ -80,36 +80,6 @@ def Emp_logout(request):
 # Página de inicio
 #@login_required(login_url='emp_login')
 def welcomePage(request):
-    return render(request, 'Employees/welcomePage.html')
-
-
-# Para acceder a esta página, se necesita estar logueado
-#@login_required(login_url='emp_login')
-def dashboard(request):
-    return render(request, 'Employees/dashboard.html')
-
-#@login_required(login_url='emp_login')
-# @admin_only
-def dashboard_Employees(request):
-    return render(request, 'Employees/dashEmployees.html')
-
-
-def employee_List(request):
-    context = {'employee_List': Employee.objects.all()} # Se crea un diccionario con la lista de los empleados
-    return render(request, 'Employees/employee_List.html', context)
-
-
-# REPORTE DE ASISTENCIA DE TRABAJADORES #
-#@login_required(login_url='emp_login')
-def worker_List(request):
-    context = {'worker_List': Worker.objects.all()}
-    return render(request, 'Employees/worker_List.html', context)
-
-current_week = date.today().isocalendar()[1] 
-
-
-# REPORTE DE ASISTENCIA DEL TRABAJADOR ACTUAL #
-def worker_Assistence(request):        
     worker_Assistence = Assistence.objects.filter(assistDate__week=current_week).filter(assistWorker = request.user.employee.pk)
     monday=False
     tuesday=False
@@ -145,11 +115,36 @@ def worker_Assistence(request):
                }
     
     # Se renderiza el archivo 'stadium_list.html' y se le envía el diccionario creado
-    return render(request, 'Employees/worker_assistence.html', worker_assistence)
+    return render(request, 'Employees/welcomePage.html', worker_assistence )
 
 
-# REPORTE DE ASISTENCIA DEL TODOS LOS EMPLEADOS #
-def assistence_list(request):
-    context = {'assistence_list': Assistence.objects.all()} # Se crea un diccionario con la lista de estadios
+# Para acceder a esta página, se necesita estar logueado
+#@login_required(login_url='emp_login')
+def dashboard(request):
+    return render(request, 'Employees/dashboard.html')
+
+#@login_required(login_url='emp_login')
+# @admin_only
+def dashboard_Employees(request):
+    return render(request, 'Employees/dashEmployees.html')
+
+
+def employee_List(request):
+    context = {'employee_List': Employee.objects.all()} # Se crea un diccionario con la lista de los empleados
+    return render(request, 'Employees/employee_List.html', context)
+
+
+# REPORTE DE ASISTENCIA DE TRABAJADORES #
+#@login_required(login_url='emp_login')
+def worker_List(request):
+    context = {'worker_List': Worker.objects.all()}
+    return render(request, 'Employees/worker_List.html', context)
+
+current_week = date.today().isocalendar()[1]     
+
+
+# # REPORTE DE ASISTENCIA DEL TODOS LOS EMPLEADOS #
+def worker_assistence(request):
+    context = {'worker_assistence': Assistence.objects.all()} # Se crea un diccionario con la lista de estadios
     # Se renderiza el archivo 'stadium_list.html' y se le envía el diccionario creado
     return render(request, 'Employees/worker_assistence.html', context)

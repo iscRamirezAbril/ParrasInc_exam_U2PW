@@ -1,5 +1,80 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h1 class="text-center">¡Bienvenido {{request.user.first_name}}!</h1>
+<h1 class="text-center text-info">¡Bienvenido {{request.user.first_name}}!</h1>
+<h3 class="text-center"> ¡No olvides registrar tu hora de entrada y salida! </h3>
+<br>
+<div class="container-fluid">
+<div class="row">
+    <h2 class="text-center text-info">Mis asistencias de la semana</h2>
+</div>
+
+<br>
+<div class="card shadow">
+    <div class="card-body">
+        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+            <table class="table my-0" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miercoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                        <th>Sábado</th>
+                        <th>Domingo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Horas de entrada</strong></td>
+                        <td>{{monday.assistEntrance}}</td>
+                        <td>{{tuesday.assistEntrance}}</td>
+                        <td>{{wednesday.assistEntrance}}</td>
+                        <td>{{thursday.assistEntrance}}</td>
+                        <td>{{friday.assistEntrance}}</td>
+                        <td>{{saturday.assistEntrance}}</td>
+                        <td>{{sunday.assistEntrance}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Horas de salida</strong></td>
+                        <td>{{monday.assistOut}}</td>
+                        <td>{{tuesday.assistOut}}</td>
+                        <td>{{wednesday.assistOut}}</td>
+                        <td>{{thursday.assistOut}}</td>
+                        <td>{{friday.assistOut}}</td>
+                        <td>{{saturday.assistOut}}</td>
+                        <td>{{sunday.assistOut}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr></tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<br><br>
+
+<h2 class="text-center text-info"> Registrar entrada y salida </h2>
+<br>
+<div class="container-fluid">
+<div class="card shadow">
+    <div class="card-body">
+        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+            <br>
+            <div class="d-grid gap-2 col-2 mx-auto">
+                <button class="btn btn-success d-block btn-user w-100 h" type="submit">Registrar entrada</button>
+                <button class="btn btn-danger d-block btn-user w-100 h" type="submit">Registrar salida</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<br>
+
+<br><br>
 {% endblock content %}
