@@ -10,3 +10,7 @@ class AreaAdmin(admin.ModelAdmin):
 @admin.register(Area_Worker)
 class AreaWorkerAdmin(admin.ModelAdmin):
     list_display = ['id', 'areaWorkName', 'areaWorkEmployee']
+
+@admin.register(ProductionLine)
+class ProductionLineAdmin(admin.ModelAdmin):
+    list_display = ['id', 'productionLineName', 'productionLineDescription', 'productionLineArea']

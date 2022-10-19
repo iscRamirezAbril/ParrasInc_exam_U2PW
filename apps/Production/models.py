@@ -15,3 +15,11 @@ class Area_Worker(models.Model):
     
     def __str__(self):
         return str(self.areaWorkEmployee)
+
+class ProductionLine(models.Model):
+    productionLineName = models.CharField(max_length=50, null=False)
+    productionLineDescription = models.CharField(max_length=100, null=False)
+    productionLineArea = models.ForeignKey(Area, on_delete=models.CASCADE, null=False)
+
+    def __str__(self):
+        return self.productionLineName
