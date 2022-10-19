@@ -9,16 +9,16 @@
                 <table class="table my-0" id="dataTable">
                     <thead>
                         <tr>
-                            <th style="text-align: center;">Eid</th>
-                            <th>Worker</th>
-                            <th style="text-align: center;">Monday</th>
-                            <th style="text-align: center;">Tuesday</th>
-                            <th style="text-align: center;">Wednesday</th>
-                            <th style="text-align: center;">Thursday</th>
-                            <th style="text-align: center;">Friday</th>
-                            <th style="text-align: center;">Saturday</th>
-                            <th style="text-align: center;">Sunday</th>
-                            <th style="text-align: center;">Extra hours</th>
+                            <th style="text-align: center;">Id</th>
+                            <th>Empleado</th>
+                            <th style="text-align: center;">Lunes</th>
+                            <th style="text-align: center;">Martes</th>
+                            <th style="text-align: center;">Miércoles</th>
+                            <th style="text-align: center;">Jueves</th>
+                            <th style="text-align: center;">Viernes</th>
+                            <th style="text-align: center;">Sábado</th>
+                            <th style="text-align: center;">Domingo</th>
+                            <th style="text-align: center;">Horas extra</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,13 +30,24 @@
                                 {% for element in weekDay %}
                                     {% for entry in element %}
                                         {% if Employee.pk == entry.assistWorker.pk %}
-                                                <td style="text-align: center;"><span>{{entry.assistEntrance}} - {{entry.assistOut}}</span><br>
+                                                <td style="text-align: center;"><span>{{entry.assistStart}} - {{entry.assistEnd}}</span><br>
                                         {% endif %}
                                     {% endfor %}
                                 {% endfor %}
                             {% endfor %}
                         <tr>
                         {% endfor %}
+                            <td style="text-align: center;"><strong>Id</strong></td>
+                            <td><strong>Empleado</strong></td>
+                            <td style="text-align: center;"><strong>Lunes</strong></td>
+                            <td style="text-align: center;"><strong>Martes</strong></td>
+                            <td style="text-align: center;"><strong>Miércoles</strong></td>
+                            <td style="text-align: center;"><strong>Jueves</strong></td>
+                            <td style="text-align: center;"><strong>Viernes</strong></td>
+                            <td style="text-align: center;"><strong>Sábado</strong></td>
+                            <td style="text-align: center;"><strong>Domingo</strong></td>
+                            <td style="text-align: center;"><strong>Horas extra</strong></td>
+                        </tr>
                     </tbody>
                     <tfoot>
                         <tr></tr>

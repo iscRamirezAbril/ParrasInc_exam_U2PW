@@ -200,7 +200,7 @@ def ClockSystemReport(request):
                 EmployeeEntry.append(entry)
         employeesReport.append(EmployeeEntry)
     
-    context = {'workerAttendance': 'active',
+    context = {'worker_assistence': 'active',
                'week' : employeesReport,
                'Days' : Days,
                'employeesId' : Employees,
