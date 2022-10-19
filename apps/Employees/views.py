@@ -182,21 +182,21 @@ def ClockSystemReport(request):
     AssistenceReport = Assistence.objects.filter(assistDate__week=current_week).distinct()
     
     employeesReport = []
-    for employeesPk in Employees:
+    for employeePk in Employees:
         EmployeeEntry = []
         for day in Days:
-            entry = Assistence.objects.filter(assistDate=day).filter(assistWorker = employeesPk.pk)
+            entry = Assistence.objects.filter(assistDate=day).filter(assistWorker = employeePk.pk)
             
             if entry.exists():
                 EmployeeEntry.append(entry)
             else:
                 created  = Assistence.objects.create(
-                    assistWorker = employeesPk,
+                    assistWorker = employeePk,
                     assistDate = day,
                     assistEntrance = '00:00:00',
                     assistOut = '00:00:00',
                     )
-                entry = Assistence.objects.filter(assistDate=day).filter(assistWorker = employeesPk.pk)
+                entry = Assistence.objects.filter(assistDate=day).filter(assistWorker = employeePk.pk)
                 EmployeeEntry.append(entry)
         employeesReport.append(EmployeeEntry)
     

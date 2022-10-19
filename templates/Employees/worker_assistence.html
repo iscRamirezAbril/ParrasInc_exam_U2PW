@@ -30,13 +30,14 @@
                                 {% for element in weekDay %}
                                     {% for entry in element %}
                                         {% if Employee.pk == entry.assistWorker.pk %}
-                                                <td style="text-align: center;"><span>{{entry.assistStart}} - {{entry.assistEnd}}</span><br>
+                                                <td style="text-align: center;"><span>{{entry.assistEntrance}} - {{entry.assistOut}}</span><br>
                                         {% endif %}
                                     {% endfor %}
                                 {% endfor %}
                             {% endfor %}
                         <tr>
                         {% endfor %}
+                        
                             <td style="text-align: center;"><strong>Id</strong></td>
                             <td><strong>Empleado</strong></td>
                             <td style="text-align: center;"><strong>Lunes</strong></td>

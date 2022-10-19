@@ -64,7 +64,7 @@ def default_start_time():
 
 # |----------| MODEL #5: Assistence |----------|
 class Assistence(models.Model):
-    assistDate=         models.DateField(auto_now_add=True, null = False)
+    assistDate=         models.DateField()
     
     assistEntrance=     models.TimeField(null = False)
     assistOut=          models.TimeField(null = False)
