@@ -29,5 +29,5 @@ urlpatterns = [
     path('worker_List/', worker_List, name = 'worker_List'),
     # TRABAJANDO #
     # Lista de asistencias de empleados por semana #
-    path('worker_assistence/', worker_assistence, name = 'worker_assistence'),
+    path('worker_assistence/', ClockSystemReport, name = 'worker_assistence'),
 ]

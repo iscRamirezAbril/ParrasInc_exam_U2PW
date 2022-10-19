@@ -9,10 +9,9 @@ from .forms import *
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate, login, logout
+from .forms import CheckClock
 
-
-from datetime import date
-from datetime import date
+from datetime import *
 
 # |==========| DECORADORES |==========| #
 from django.contrib.auth.decorators import *
@@ -103,7 +102,50 @@ def welcomePage(request):
             saturday=day
         if day.assistDate.weekday() == 6:
             sunday=day
-    worker_assistence = {'worker_Assistence': 'active',
+    
+        # |=| Generamos formulario de Check.  |=|
+    form = CheckClock()
+    # |=| Validamos que el formulario es  |=|
+    # |=| respectoa un método POST.       |=|
+    if request.method == 'POST':
+        form = CheckClock(request.POST)
+        # |=| Validamos el formuario.     |=|
+        if form.is_valid():
+            WorkerPk = form.cleaned_data.get('assistWorker')
+            
+            # |=| Validamos el formuario. |=|
+            Entry = Assistence.objects.filter(assistDate=str(datetime.now().date())).filter(assistWorker = WorkerPk)
+            # |=| Texto para validar      |=|
+            # |=| entrada de datos.       |=|
+            text = str(Entry)
+            
+            # |=| Validams si existe una  |=|
+            # |=| Entrada previa.         |=|
+            # |=| (Si checo de entrada)   |=|
+            if Entry.exists():
+                Assistence.objects.filter(assistWorker=WorkerPk.pk).filter(assistDate=str(datetime.now().date())).update(assistOut=datetime.now().strftime('%H:%M:%S'))
+                text = "Se registró correctamente tu hora de salida " + WorkerPk.empFirstName + ' ' + WorkerPk.empFirstName + '.'
+            # |=| En caso de que no tenga |=|
+            # |=| registro de entrada se  |=|
+            # |=| generará una entrada.   |=|
+            else:
+                attendanceReport,created  = Assistence.objects.get_or_create(
+                    assistWorker = WorkerPk,
+                    assistDate = datetime.now().date(),
+                    assistEntrance = datetime.now().strftime('%H:%M:%S'),
+                    assistOut = '00:00:00',
+                    )
+                text = "Se registró correctamente tu entrada " + WorkerPk.empFirstName + ' ' + WorkerPk.empFirstName + '.'
+            messages.success(request, text)
+        # |=| Si algo sale mal enviamos   |=|
+        # |=| mensaje de solicitúd de     |=|
+        # |=| ayuda al departamento de    |=|
+        # |=| sistemas.                   |=|
+        else:
+            text = 'Algo salió mal, favor de contactar al departamento de sistemas: sistemas@axolotlteam.com'
+            messages.success(request, text)
+    
+    context = {'worker_Assistence': 'active',
                'worker' : request.user.employee,
                'monday' : monday, 
                'tuesday' : tuesday, 
@@ -112,11 +154,69 @@ def welcomePage(request):
                'friday' : friday,
                'saturday' : saturday,
                'sunday' : sunday,
+               
+               'form': form
                }
     
     # Se renderiza el archivo 'stadium_list.html' y se le envía el diccionario creado
-    return render(request, 'Employees/welcomePage.html', worker_assistence )
+    return render(request, 'Employees/welcomePage.html', context )
 
+# |=========================================|
+# |=====|        RELOJ CHECADOR       |=====|
+# |=========================================|
+# |=| Proceso de Ckech in de trabajador.  |=|
+# |=========================================|
+def ClockSystemReport(request):
+    # |=| Conjunto de trabajadores con    |=|
+    # |=| reportes de asistencia.         |=|
+        
+    dayToday = date.today()
+    dayStart = dayToday - timedelta(days=dayToday.weekday())
+    Days = []
+    dayCount = days=dayToday.weekday()
+    for day in range(-1,dayCount):
+        Days.append(dayStart + timedelta(days=day+1))
+    
+    Employees = Employee.objects.filter(assistence__isnull=False).distinct()
+    
+    AssistenceReport = Assistence.objects.filter(assistDate__week=current_week).distinct()
+    
+    employeesReport = []
+    for employeesPk in Employees:
+        EmployeeEntry = []
+        for day in Days:
+            entry = Assistence.objects.filter(assistDate=day).filter(assistWorker = employeesPk.pk)
+            
+            if entry.exists():
+                EmployeeEntry.append(entry)
+            else:
+                created  = Assistence.objects.create(
+                    assistWorker = employeesPk,
+                    assistDate = day,
+                    assistEntrance = '00:00:00',
+                    assistOut = '00:00:00',
+                    )
+                entry = Assistence.objects.filter(assistDate=day).filter(assistWorker = employeesPk.pk)
+                EmployeeEntry.append(entry)
+        employeesReport.append(EmployeeEntry)
+    
+    context = {'workerAttendance': 'active',
+               'week' : employeesReport,
+               'Days' : Days,
+               'employeesId' : Employees,
+               }
+    return render(request, 'Employees/worker_assistence.html', context)
+    
+
+# |=========================================|
+# |=====|        RELOJ CHECADOR       |=====|
+# |=========================================|
+# |=| Proceso de Ckech in de trabajador.  |=|
+# |=========================================|
+# def ClockSystem(request):
+            
+#     context = {'form': form}
+#     return render(request, 'Employees/welcomePage.html', context)
 
 # Para acceder a esta página, se necesita estar logueado
 #@login_required(login_url='emp_login')
