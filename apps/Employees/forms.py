@@ -59,6 +59,6 @@ class CheckClock (ModelForm):
         widgets = {
             'assistWorker': forms.TextInput(attrs={
                 'class': 'form-control', 
-                'style': 'background-color: #fff; border: 1px solid #ced4da; border-radius: .25rem; padding: .375rem .75rem; width: 100%;', 
+                'style': 'background-color: #fff; border: 1px solid #ced4da; border-radius: 20px; padding: .375rem .75rem; width: 100%; height 20px', 
                 'placeholder': 'Ingrese su número de empleado'}),
         }

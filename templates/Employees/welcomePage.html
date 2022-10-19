@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1 class="text-center text-info"><strong>¡Bienvenido {{request.user.first_name}}!</strong></h1>
-<h3 class="text-center text-black">(Su "Id" de empleado es: {{request.user.id}})</h1>
+<h3 class="text-center text-black">(Su "Id" de empleado es: {{worker.pk}})</h1>
 <br>
 <h3 class="text-center"><strong> ¡No olvides registrar tu hora de entrada y salida! </strong></h3>
 <br>
@@ -19,6 +19,7 @@
                 <thead>
                     <tr>
                         <th>&nbsp;</th>
+                        <th>Id</th>
                         <th>Lunes</th>
                         <th>Martes</th>
                         <th>Miercoles</th>
@@ -31,6 +32,7 @@
                 <tbody>
                     <tr>
                         <td><strong>Horas de entrada</strong></td>
+                        <td>{{worker.pk}}</td>
                         <td>{{monday.assistEntrance}}</td>
                         <td>{{tuesday.assistEntrance}}</td>
                         <td>{{wednesday.assistEntrance}}</td>
@@ -41,6 +43,7 @@
                     </tr>
                     <tr>
                         <td><strong>Horas de salida</strong></td>
+                        <td>{{worker.pk}}</td>
                         <td>{{monday.assistOut}}</td>
                         <td>{{tuesday.assistOut}}</td>
                         <td>{{wednesday.assistOut}}</td>
@@ -77,10 +80,6 @@
                         <div class="mb-3">
                             {{form}}
                         </div>
-                        <div class="mb-3"></div>
-                        <div class="mb-3">
-                            <div class="custom-control custom-checkbox small"></div>
-                        </div>
                         <button class="btn btn-primary d-block btn-user w-100" type="submit">Check in</button>
                         <hr>
                     </form>
@@ -93,4 +92,5 @@
 <br>
 
 <br><br>
+
 {% endblock content %}

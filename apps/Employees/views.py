@@ -103,7 +103,7 @@ def welcomePage(request):
         if day.assistDate.weekday() == 6:
             sunday=day
     
-        # |=| Generamos formulario de Check.  |=|
+    # |=| Generamos formulario de Check.  |=|
     form = CheckClock()
     # |=| Validamos que el formulario es  |=|
     # |=| respectoa un método POST.       |=|
@@ -155,7 +155,7 @@ def welcomePage(request):
                'saturday' : saturday,
                'sunday' : sunday,
                
-               'form': form
+               'form' : form,
                }
     
     # Se renderiza el archivo 'stadium_list.html' y se le envía el diccionario creado
@@ -208,16 +208,6 @@ def ClockSystemReport(request):
     return render(request, 'Employees/worker_assistence.html', context)
     
 
-# |=========================================|
-# |=====|        RELOJ CHECADOR       |=====|
-# |=========================================|
-# |=| Proceso de Ckech in de trabajador.  |=|
-# |=========================================|
-# def ClockSystem(request):
-            
-#     context = {'form': form}
-#     return render(request, 'Employees/welcomePage.html', context)
-
 # Para acceder a esta página, se necesita estar logueado
 #@login_required(login_url='emp_login')
 def dashboard(request):
@@ -229,9 +219,9 @@ def dashboard_Employees(request):
     return render(request, 'Employees/dashEmployees.html')
 
 
-def employee_List(request):
-    context = {'employee_List': Employee.objects.all()} # Se crea un diccionario con la lista de los empleados
-    return render(request, 'Employees/employee_List.html', context)
+# def employee_List(request):
+#     context = {'employee_List': Employee.objects.all()} # Se crea un diccionario con la lista de los empleados
+#     return render(request, 'Employees/employee_List.html', context)
 
 
 # REPORTE DE ASISTENCIA DE TRABAJADORES #
@@ -240,11 +230,4 @@ def worker_List(request):
     context = {'worker_List': Worker.objects.all()}
     return render(request, 'Employees/worker_List.html', context)
 
-current_week = date.today().isocalendar()[1]     
-
-
-# # REPORTE DE ASISTENCIA DEL TODOS LOS EMPLEADOS #
-def worker_assistence(request):
-    context = {'worker_assistence': Assistence.objects.all()} # Se crea un diccionario con la lista de estadios
-    # Se renderiza el archivo 'stadium_list.html' y se le envía el diccionario creado
-    return render(request, 'Employees/worker_assistence.html', context)
+current_week = date.today().isocalendar()[1]
