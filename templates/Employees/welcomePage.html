@@ -64,10 +64,15 @@
 <h2 class="text-center text-info"> Registrar entrada y salida </h2>
 <br>
 <div class="container-fluid">
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <div class="container-fluid">
+            <div class="container-fluid">
+<div class="container-fluid">
 <div class="card shadow card text-center">
     <div class="card-body p-6">
-        <h5 class="text-center">Para registrar su hora de entrada y salida correctamente, deberá de escribir en el siguiente recuadro</h5>
-        <h5 class="text-center">su "Id" de empleado y dar clic en el botón correspondiente =D</5>
+        <h5 class="text-center">Para registrar su hora de entrada y salida correctamente, deberá de escribir en el siguiente recuadro su "Id" de empleado y dar clic en el botón correspondiente =D</5>
         <center>
             <br>
             <div>
@@ -75,7 +80,7 @@
                     <form method="POST" class="user">
                         {% csrf_token %}
                         <div class="mb-3">
-                            {{form}}
+                            {{form.assistWorker}}
                         </div>
                         <button class="btn btn-primary d-block btn-user w-50" type="submit">Check!</button>
                     </form>
@@ -85,9 +90,15 @@
     </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <br>
 
-<br><br><br><br><br><br><br><br><br>
+<br>
 
 <div class="d-grid gap-2 col-2 mx-auto">
   <a class="btn btn-danger" type="button" href="{%url 'emp_logout'%}">Cerrar sesión</a>
