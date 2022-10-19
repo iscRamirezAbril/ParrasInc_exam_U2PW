@@ -4,6 +4,7 @@ from apps.Employees.models import *
 # Create your models here.
 class Area(models.Model):
     areaName = models.CharField(max_length=50, null=False)
+    areaDescription = models.CharField(max_length=50, null=False)
 
     def __str__(self):
         return self.areaName

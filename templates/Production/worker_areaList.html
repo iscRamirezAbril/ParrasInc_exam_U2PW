@@ -4,7 +4,7 @@
 
     <div class="row">
         <br>
-        <h1 h1 class="text-center text-info"><strong>Reporte de empleados por área</strong></h1>
+        <h1 class="text-center text-info"><strong>Reporte de empleados por área</strong></h1>
     </div>
 
     <br>
@@ -42,6 +42,14 @@
 </div>
 <div class="container-fluid">
 
+    <br>
+
+    <br>
+
+    <div class="d-grid gap-2 col-2 mx-auto">
+        <a class="btn btn-success" type="button" href="{%url 'emp_logout'%}">Registrar</a>
+    </div>
+
     <br><br>
 
     <div class="row">
@@ -61,10 +69,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for areaAuto in microTec %}
+                        {% for areaMicro in microTec %}
                         <tr>
-                            <td>{{ areaAuto.areaWorkName }}</td>
-                            <td>{{ areaAuto.areaWorkEmployee }}</td>
+                            <td>{{ areaMicro.areaWorkName }}</td>
+                            <td>{{ areaMicro.areaWorkEmployee }}</td>
                         </tr>
                         {% endfor %}
                     <tfoot>
@@ -74,6 +82,24 @@
             </div>
         </div>
     </div>
+
+    <br>
+
+    <br>
+
+    <div class="d-grid gap-2 col-2 mx-auto">
+        <a class="btn btn-success" type="button" href="{%url 'emp_logout'%}">Registrar</a>
+    </div>
+
+
+    <br>
+
+    <br>
+
+    <div class="d-grid gap-2 col-2 mx-auto">
+        <a class="btn btn-danger" type="button" href="{%url 'emp_logout'%}">Cerrar sesión</a>
+    </div>
+
 </div>
 <br><br>
 {% endblock %}

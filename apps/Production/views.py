@@ -8,5 +8,5 @@ from apps.Production.models import *
 def worker_Area(request):
     auto = Area_Worker.objects.filter(areaWorkName = 1)
     microTec = Area_Worker.objects.filter(areaWorkName = 2)
-    
+        
     return render(request, 'Production/worker_areaList.html', {'auto': auto, 'microTec': microTec})
