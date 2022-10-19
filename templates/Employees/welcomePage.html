@@ -19,7 +19,6 @@
                 <thead>
                     <tr>
                         <th>&nbsp;</th>
-                        <th>Id</th>
                         <th>Lunes</th>
                         <th>Martes</th>
                         <th>Miercoles</th>
@@ -32,7 +31,6 @@
                 <tbody>
                     <tr>
                         <td><strong>Horas de entrada</strong></td>
-                        <td>{{worker.pk}}</td>
                         <td>{{monday.assistEntrance}}</td>
                         <td>{{tuesday.assistEntrance}}</td>
                         <td>{{wednesday.assistEntrance}}</td>
@@ -43,7 +41,6 @@
                     </tr>
                     <tr>
                         <td><strong>Horas de salida</strong></td>
-                        <td>{{worker.pk}}</td>
                         <td>{{monday.assistOut}}</td>
                         <td>{{tuesday.assistOut}}</td>
                         <td>{{wednesday.assistOut}}</td>
@@ -80,8 +77,7 @@
                         <div class="mb-3">
                             {{form}}
                         </div>
-                        <button class="btn btn-primary d-block btn-user w-100" type="submit">Check in</button>
-                        <hr>
+                        <button class="btn btn-primary d-block btn-user w-50" type="submit">Check!</button>
                     </form>
                 </div>
             </div>
@@ -90,6 +86,12 @@
 </div>
 </div>
 <br>
+
+<br><br><br><br><br><br><br><br><br>
+
+<div class="d-grid gap-2 col-2 mx-auto">
+  <a class="btn btn-danger" type="button" href="{%url 'emp_logout'%}">Cerrar sesión</a>
+</div>
 
 <br><br>
 

@@ -124,7 +124,7 @@ def welcomePage(request):
             # |=| (Si checo de entrada)   |=|
             if Entry.exists():
                 Assistence.objects.filter(assistWorker=WorkerPk.pk).filter(assistDate=str(datetime.now().date())).update(assistOut=datetime.now().strftime('%H:%M:%S'))
-                text = "Se registró correctamente tu hora de salida " + WorkerPk.empFirstName + ' ' + WorkerPk.empFirstName + '.'
+                text = "Se registró correctamente tu hora de salida " + WorkerPk.empFirstName + ' ' + WorkerPk.empLastName + '.'
             # |=| En caso de que no tenga |=|
             # |=| registro de entrada se  |=|
             # |=| generará una entrada.   |=|
@@ -135,16 +135,16 @@ def welcomePage(request):
                     assistEntrance = datetime.now().strftime('%H:%M:%S'),
                     assistOut = '00:00:00',
                     )
-                text = "Se registró correctamente tu entrada " + WorkerPk.empFirstName + ' ' + WorkerPk.empFirstName + '.'
+                text = "Se registró correctamente tu entrada " + WorkerPk.empFirstName + ' ' + WorkerPk.empLastName + '.'
             messages.success(request, text)
         # |=| Si algo sale mal enviamos   |=|
         # |=| mensaje de solicitúd de     |=|
         # |=| ayuda al departamento de    |=|
         # |=| sistemas.                   |=|
         else:
-            text = 'Algo salió mal, favor de contactar al departamento de sistemas: sistemas@axolotlteam.com'
+            text = 'Algo salió mal, favor de intentar de nuevo'
             messages.success(request, text)
-    
+
     context = {'worker_Assistence': 'active',
                'worker' : request.user.employee,
                'monday' : monday, 
