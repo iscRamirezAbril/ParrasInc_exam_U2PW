@@ -1,8 +1,10 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h1 class="text-center text-info">¡Bienvenido {{request.user.first_name}}!</h1>
-<h3 class="text-center"> ¡No olvides registrar tu hora de entrada y salida! </h3>
+<h1 class="text-center text-info"><strong>¡Bienvenido {{request.user.first_name}}!</strong></h1>
+<h3 class="text-center text-black">(Su "Id" de empleado es: {{request.user.id}})</h1>
+<br>
+<h3 class="text-center"><strong> ¡No olvides registrar tu hora de entrada y salida! </strong></h3>
 <br>
 <div class="container-fluid">
 <div class="row">
@@ -62,15 +64,25 @@
 <h2 class="text-center text-info"> Registrar entrada y salida </h2>
 <br>
 <div class="container-fluid">
-<div class="card shadow">
-    <div class="card-body">
-        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+<div class="card shadow card text-center">
+    <div class="card-body p-6">
+        <h5 class="text-center">Para registrar su hora de entrada y salida correctamente, deberá de escribir en el siguiente recuadro</h5>
+        <h5 class="text-center">su "Id" de empleado y dar clic en el botón correspondiente =D</5>
+        <center>
             <br>
-            <div class="d-grid gap-2 col-2 mx-auto">
-                <button class="btn btn-success d-block btn-user w-100 h" type="submit">Registrar entrada</button>
-                <button class="btn btn-danger d-block btn-user w-100 h" type="submit">Registrar salida</button>
+            <div>
+                <form class="user" method="POST">
+                    {% csrf_token %}
+                    <p style="text-align:center">
+                        <div class="mb-3"><input class="form-control form-control-user w-50" type="text" placeholder="Ingrese su Id de usuario" name="id" req></div>
+                        <button class="btn btn-success d-block btn-user w-50" type="submit">Registrar entrada</button>
+                        <br>
+                        <button class="btn btn-primary d-block btn-user w-50" type="submit">Registrar salida</button>
+                        <br>
+                    </p>
+                </form>
             </div>
-        </div>
+        <center>
     </div>
 </div>
 </div>
