@@ -30,9 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
-
+#|-------------------------------------- APPLICATION SECTION START ---------------------------------------|
 # |=====| Default Django apps |=====|
 BASE_APPS = [
     'django.contrib.admin',
@@ -52,8 +50,15 @@ LOCAL_APPS = [
     'apps.API',
 ]
 
+# |=====| Apps from another devs |=====|
+THIRD_APPS = [
+   'rest_framework',
+]
+
 # |=====| ALL APPS |=====|
-INSTALLED_APPS = BASE_APPS + LOCAL_APPS
+INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
+
+#|------------------------------------- APPLICATION SECTION FINISHED --------------------------------------|
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
