@@ -7,98 +7,52 @@
         <h1 class="text-center text-info"><strong>Reporte de empleados por área</strong></h1>
     </div>
 
-    <br>
-
+    {% for Area in areasList %}
     <div class="row">
-        <br>
-        <h3 class="text-center">Reporte de empleados del área Automotríz</h3>
-    </div>
-
-    <br>
-    <div class="card shadow">
-        <div class="card-body">
-            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                <table class="table my-0" id="dataTable">
-                    <thead>
-                        <tr>
-                            <th>Nombre del área</th>
-                            <th>Nombre del empleado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for Area in areasList %}
-                            {% if Area.areaName == 'Automotríz' %}
-                                <tr>
-                                    <td>{{ Area.areaName }}</td>
-                                    <td>{{ Area.EmployeeFirstName }}</td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-                    <tfoot>
-                        <tr></tr>
-                    </tfoot>
-                </table>
-            </div>
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h4 class="text-dark mb-0">[Area] {{Area.areaName}}</h4>
         </div>
+        {% for Line in linesList %}
+                {% if Line.productionLineArea.pk == Area.pk %}
+                <div class="col-xxl-6 mb-4">
+                    <div class="card shadow border-start-success py-2">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Trabajadores de la
+                                {{Line.productionLineName}}</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
+                                <table class="sortable table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% comment %} Se imprimen los trabajadores sin trabajo asignado {%endcomment %}
+                                        {% for worker in workersList %}
+                                        {% if worker.lineMemberWorker.pk == Line.pk %}
+                                        <tr>
+                                            <td>{{worker.prodlworkerAssignment.jobWorker.workerNameFirst}}
+                                                {{worker.prodlworkerAssignment.jobWorker.workerNameLast}}
+                                            </td>
+                                            <td>{{worker.prodlworkerAssignment.jobJobTittle.jobtName}}</td>
+
+                                        </tr>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
-</div>
-<div class="container-fluid">
-
-    <br>
-
-    <br>
-
-    <div class="d-grid gap-2 col-2 mx-auto">
-        <a class="btn btn-success" type="button" href="{%url 'emp_logout'%}">Registrar</a>
-    </div>
-
-    <br><br>
-
-    <div class="row">
-        <br>
-        <h3 class="text-center">Reporte de empleados del área de Micro-Tecnología</h3>
-    </div>
-
-    <br>
-    <div class="card shadow">
-        <div class="card-body">
-            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                <table class="table my-0" id="dataTable">
-                    <thead>
-                        <tr>
-                            <th>Nombre del área</th>
-                            <th>Nombre del empleado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for Area in areasList %}
-                            {% if Area.areaName == 'Micro-Tecnología' %}
-                                <tr>
-                                    <td>{{ Area.areaName }}</td>
-                                    <td>{{ Area.EmployeeFirstName }}</td>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-                    <tfoot>
-                        <tr></tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <br>
-
-    <br>
-
-    <div class="d-grid gap-2 col-2 mx-auto">
-        <a class="btn btn-success" type="button" href="{%url 'emp_logout'%}">Registrar</a>
-    </div>
-
-
-    <br>
-
-    <br>
+{% endfor %}
 
     <div class="d-grid gap-2 col-2 mx-auto">
         <a class="btn btn-danger" type="button" href="{%url 'emp_logout'%}">Cerrar sesión</a>
