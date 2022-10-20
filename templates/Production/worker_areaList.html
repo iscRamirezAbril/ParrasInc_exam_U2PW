@@ -26,11 +26,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for areaAuto in auto %}
-                        <tr>
-                            <td>{{ areaAuto.areaWorkName }}</td>
-                            <td>{{ areaAuto.areaWorkEmployee }}</td>
-                        </tr>
+                        {% for Area in areasList %}
+                            {% if Area.areaName == 'Automotríz' %}
+                                <tr>
+                                    <td>{{ Area.areaName }}</td>
+                                    <td>{{ Area.EmployeeFirstName }}</td>
+                                </tr>
+                            {% endif %}
                         {% endfor %}
                     <tfoot>
                         <tr></tr>
@@ -69,11 +71,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for areaMicro in microTec %}
-                        <tr>
-                            <td>{{ areaMicro.areaWorkName }}</td>
-                            <td>{{ areaMicro.areaWorkEmployee }}</td>
-                        </tr>
+                        {% for Area in areasList %}
+                            {% if Area.areaName == 'Micro-Tecnología' %}
+                                <tr>
+                                    <td>{{ Area.areaName }}</td>
+                                    <td>{{ Area.EmployeeFirstName }}</td>
+                                </tr>
+                            {% endif %}
                         {% endfor %}
                     <tfoot>
                         <tr></tr>

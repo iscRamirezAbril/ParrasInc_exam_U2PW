@@ -5,7 +5,10 @@ from apps.Production.views import *
 
 urlpatterns = [
     # |===============| ADMINISTRACIÓN DE PRODUCCIÓN |===============| #
-    # LISTO #
+    # TRABAJANDO... #
+    # Dashboard de Producción #
+    path('dashboard_Production/', dashboard_Production, name='dashboard_Production'),
+    # TRABAJANDO... #
     # Lista de empleados por áreas #
     path('worker_area/', worker_Area, name = 'worker_areaList'),
 ]

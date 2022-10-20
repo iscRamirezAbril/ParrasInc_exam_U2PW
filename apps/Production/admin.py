@@ -6,11 +6,11 @@ from apps.Production.models import *
 @admin.register(Area)
 class AreaAdmin(admin.ModelAdmin):
     list_display = ['id', 'areaName']
-    
-@admin.register(Area_Worker)
-class AreaWorkerAdmin(admin.ModelAdmin):
-    list_display = ['id', 'areaWorkName', 'areaWorkEmployee']
 
 @admin.register(ProductionLine)
 class ProductionLineAdmin(admin.ModelAdmin):
-    list_display = ['id', 'productionLineName', 'productionLineDescription', 'productionLineArea']
+    list_display = ['id', 'productionLineName', 'productionLineDescription', 'productionLineArea',]
+
+@admin.register(LineMember)
+class ProductionLineAdmin(admin.ModelAdmin):
+    list_display = ['id', 'lineMemberName', 'lineMemberWorker',]
