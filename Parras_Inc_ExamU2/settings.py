@@ -49,6 +49,7 @@ LOCAL_APPS = [
     # 'apps.Pieces',
     'apps.Production',
     # 'apps.Warehouse',
+    'apps.API',
 ]
 
 # |=====| ALL APPS |=====|
