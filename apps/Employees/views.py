@@ -57,7 +57,7 @@ def register(request):
             user.groups.add(group)
             
             Employee.objects.create(
-                empUsername = user,
+                user = user,
                 empEmail =     user.username,
                 empFirstName = user.first_name,
                 empLastName =  user.last_name,

@@ -12,12 +12,12 @@
         {% for Area in areasList %}
         <div class="col-md-6 col-xl-6">
             <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                <h4 class="text-dark mb-0">[Area] {{Area.areaName}}</h4>
+                <h3 class="text-dark mb-0">[Area] {{Area.areaName}}</h3>
             </div>
             {% comment %} Imprimir todas las líneas de producción {% endcomment %}
             {% for Line in linesList %}
             {% if Line.productionLineArea.pk == Area.pk %}
-            <h3 class="text-center text-info"><strong>{{Line.productionLineName}}</strong></h3>
+            <h4 class="text-secondary">{{Line.productionLineName}}</h4>
 
             <div class="card shadow">
                 <div class="card-body">
@@ -58,6 +58,7 @@
         {% endfor %}
     </div>
 
+    <br>
     <div class="d-grid gap-2 col-2 mx-auto">
         <a class="btn btn-danger" type="button" href="{%url 'emp_logout'%}">Cerrar sesión</a>
     </div>

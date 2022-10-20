@@ -17,7 +17,7 @@ class Employee(models.Model):
     empDateJoined=      models.DateField(auto_now_add=True, null = False)
     empStatus=          models.BooleanField(default=False)
     empEmail=           models.EmailField(max_length=50, null = False)
-    empUsername=        models.OneToOneField(User, on_delete=models.CASCADE, null = False)
+    user=               models.OneToOneField(User, on_delete=models.CASCADE, null = False)
     
     def __str__(self):
         return "%s %s" % (self.empFirstName, self.empLastName) # David Perez
