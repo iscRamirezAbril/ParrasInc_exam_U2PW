@@ -7,52 +7,56 @@
         <h1 class="text-center text-info"><strong>Reporte de empleados por área</strong></h1>
     </div>
 
-    {% for Area in areasList %}
+    {% comment %} Impresión de todas las areas {% endcomment %}
     <div class="row">
-        <div class="d-sm-flex justify-content-between align-items-center mb-4">
-            <h4 class="text-dark mb-0">[Area] {{Area.areaName}}</h4>
-        </div>
-        {% for Line in linesList %}
-                {% if Line.productionLineArea.pk == Area.pk %}
-                <div class="col-xxl-6 mb-4">
-                    <div class="card shadow border-start-success py-2">
-                        <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Trabajadores de la
-                                {{Line.productionLineName}}</p>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
-                                aria-describedby="dataTable_info">
-                                <table class="sortable table my-0" id="dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% comment %} Se imprimen los trabajadores sin trabajo asignado {%endcomment %}
-                                        {% for worker in workersList %}
-                                        {% if worker.lineMemberWorker.pk == Line.pk %}
-                                        <tr>
-                                            <td>{{worker.prodlworkerAssignment.jobWorker.workerNameFirst}}
-                                                {{worker.prodlworkerAssignment.jobWorker.workerNameLast}}
-                                            </td>
-                                            <td>{{worker.prodlworkerAssignment.jobJobTittle.jobtName}}</td>
+        {% for Area in areasList %}
+        <div class="col-md-6 col-xl-6">
+            <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                <h4 class="text-dark mb-0">[Area] {{Area.areaName}}</h4>
+            </div>
+            {% comment %} Imprimir todas las líneas de producción {% endcomment %}
+            {% for Line in linesList %}
+            {% if Line.productionLineArea.pk == Area.pk %}
+            <h3 class="text-center text-info"><strong>{{Line.productionLineName}}</strong></h3>
 
-                                        </tr>
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                        aria-describedby="dataTable_info">
+                        <table class="table my-0" id="dataTable">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre completo</th>
+                                    <th>Puesto</th>
+                                    <th>Correo (username)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    {% for Member in workersList %}
+                                        {% if Member.lineMemberWorker.pk == Line.pk %}
+                                        <td>{{Member.lineMemberWorker.workerEmployee.pk}}</td>
+                                        <td>{{Member.lineMemberWorker.workerEmployee.empFirstName}} {{Member.lineMemberWorker.workerEmployee.empLastName}}</td>
+                                        <td>{{Member.lineMemberWorker.workerJobPosition.jpName}}</td>
+                                        <td>{{Member.lineMemberWorker.workerEmployee.empUsername}}</td>
                                         {% endif %}
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                    {% endfor %}
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr></tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
+            </div>
+
             {% endif %}
+            {% endfor %}
+        </div>
         {% endfor %}
     </div>
-{% endfor %}
 
     <div class="d-grid gap-2 col-2 mx-auto">
         <a class="btn btn-danger" type="button" href="{%url 'emp_logout'%}">Cerrar sesión</a>

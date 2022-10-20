@@ -20,7 +20,7 @@ class Employee(models.Model):
     empUsername=        models.OneToOneField(User, on_delete=models.CASCADE, null = False)
     
     def __str__(self):
-        return self.empFirstName
+        return "%s %s" % (self.empFirstName, self.empLastName) # David Perez
 
 # |----------| MODEL #2: Department |----------|
 class Department(models.Model):
@@ -55,7 +55,7 @@ class Worker(models.Model):
     workerJobPosition=  models.ForeignKey(job_Position, on_delete=models.CASCADE, null = False)
     
     def __str__(self):
-        return str(self.workerEmployee)
+        return "Worker - %s" % (self.workerEmployee) # Worker - David
 
 def default_start_time():
     now = datetime.now().strftime('%H:%M:%S')

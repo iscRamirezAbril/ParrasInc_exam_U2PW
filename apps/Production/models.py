@@ -22,4 +22,4 @@ class LineMember(models.Model):
     lineMemberWorker = models.ForeignKey(Worker, on_delete=models.CASCADE, null=False)
 
     def __str__(self):
-        return str(self.lineMemberWorker)
+        return "%s - %s" % (self.lineMemberName, self.lineMemberWorker) # Linea 1 - Materias Primas - David
