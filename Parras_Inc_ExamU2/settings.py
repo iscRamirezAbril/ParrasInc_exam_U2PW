@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY') # Leemos la variable SECRET_KEY del archivo .e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.32.5', '192.168.32.98']
 
 #|-------------------------------------- APPLICATION SECTION START ---------------------------------------|
 # |=====| Default Django apps |=====|
