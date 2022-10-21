@@ -1,5 +1,6 @@
 from ast import Assign
 from multiprocessing import context
+from unicodedata import category
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -10,6 +11,8 @@ from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate, login, logout
 from .forms import CheckClock
+from apps.Production.models import *
+from apps.Parts.models import *
 
 from datetime import *
 
@@ -217,8 +220,16 @@ def ClockSystemReport(request):
 # Para acceder a esta página, se necesita estar logueado
 #@login_required(login_url='emp_login')
 def dashboard(request):
+    workers = Employee.objects.all()
+    products = Product.objects.all()
+    categories = Category.objects.all()
+    prodLines = ProductionLine.objects.all()
     context = {
         'Inicio': 'active',
+        'workers': workers,
+        'products': products,
+        'categories': categories,
+        'prodLines': prodLines,
     }
     return render(request, 'Employees/dashboard.html', context)
 

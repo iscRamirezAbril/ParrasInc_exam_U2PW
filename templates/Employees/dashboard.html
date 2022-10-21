@@ -5,56 +5,81 @@
 <div class="container-fluid">
 <div class="row">
     <br>
-    <h1 class="text-center text-info">Dashboard</h1>
+    <h1 class="text-center text-info"><strong>Dashboard</strong></h1>
+    <h3 class="text-center">Este apartado es solo informativo</h3>
 </div>
 <br>
 
   <div class="container">
     <div class="row">
-      {% if request.user.is_staff%}
-        <div class="col-4">
-          <div class="card text-bg-info mb-3">
-            <div class="card-body">
-              <h5 class="card-title">Total de empleados</h5>
-              <img src="https://cdn-icons-png.flaticon.com/512/554/554744.png" alt="" width="45" height="45" class="d-inline-block align-text-top"></i>
-              <h2 class="text-right"><span>0</span></h2>
-            </div>
-          </div>
-        </div>
-        {% endif %}
-
 
         <div class="col-sm-12 col-xl-6">
-          <div class="card text-bg-secondary mb-3">
+          <div class="card text-bg-primary mb-3">
             <div class="card-body">
               <div class="row">
-                <h5 class="card-title">
-                  Total de productos</h5>
+                <h5 class="card-title"><strong>
+                  Total de empleados registrados</strong></h5>
                 <div class="row"><hr> </div>
               </div>
               <div style="text-align:  left;">
-                <i class='fas fa-cogs' style='font-size:48px'></i>
+                <i class='fas fa-users' style='font-size:48px'></i>
               </div>
               <div class="row" style="text-align:  right;">
-                <h2 class="text-right"><span>0</span></h2>
+                <h2 class="text-right"><span>{{workers.count}}</span></h2>
               </div>
             </div>
           </div>
         </div>
 
         <div class="col-sm-12 col-xl-6">
-          <div class="card text-bg-secondary mb-3">
+          <div class="card text-white bg-dark mb-3">
             <div class="card-body">
               <div class="row">
-                <h5 class="card-title">
-                  Total de proyectos activos</h5>
+                <h5 class="card-title"><strong>
+                  Total de productos disponibles</strong></h5>
+                <div class="row"><hr> </div>
+              </div>
+              <div style="text-align:  left;">
+                <i class='fas fa-boxes' style='font-size:48px'></i>
+              </div>
+              <div class="row" style="text-align:  right;">
+                <h2 class="text-right"><span>{{products.count}}</span></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-6">
+          <div class="card text-bg-success mb-3">
+            <div class="card-body">
+              <div class="row">
+                <h5 class="card-title"><strong>
+                  Total de categorias</strong></h5>
+                <div class="row"><hr> </div>
+              </div>
+              <div style="text-align:  left;">
+                <i class='fas fa-network-wired' style='font-size:48px'></i>
+              </div>
+              <div class="row" style="text-align:  right;">
+                <h2 class="text-right"><span>{{categories.count}}</span></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-xl-6">
+          <div class="card text-bg-warning mb-3">
+            <div class="card-body">
+              <div class="row">
+                <h5 class="card-title"><strong>
+                  Total de líneas de producción</strong></h5>
                 <div class="row"><hr> </div>
               </div>
               <div style="text-align:  left;">
                 <i class='fas fa-cogs' style='font-size:48px'></i>
               </div>
               <div class="row" style="text-align:  right;">
-                <h2 class="text-right"><span>0</span></h2>
+                <h2 class="text-right"><span>{{prodLines.count}}</span></h2>
               </div>
             </div>
           </div>
