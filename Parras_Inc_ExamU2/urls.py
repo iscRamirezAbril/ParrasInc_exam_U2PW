@@ -25,8 +25,8 @@ urlpatterns = [
     path('index/', index), # This is the path to the index.html file
     
     path('Employees/', include('apps.Employees.urls')),
-    # path('Pieces/', include('apps.Pieces.urls')),
+    # path('Parts/', include('apps.Parts.urls')),
     path('Production/', include('apps.Production.urls')),
-    # path('Warehouse/', include('apps.Warehouse.urls')),
+    path('Warehouse/', include('apps.Warehouse.urls')),
     path('API/', include('apps.API.urls')),
 ]

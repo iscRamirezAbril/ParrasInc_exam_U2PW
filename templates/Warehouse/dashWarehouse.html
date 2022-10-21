@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">  
+  <div class="row">
+    <br>
+    <h1 class="text-center text-info"><strong>Administración de almacén</strong></h1>
+  </div>
+  <br>
+
+  <div class="row">
+
+    <div class="col-sm-12 col-xl-6">
+      <a href="{%url 'worker_List'%}" style="text-decoration: none;">
+        <div class="card text-bg-info mb-3">
+          <div class="card-body">
+            <div class="row">
+              <h5 class="card-title"><strong>
+                Reporte de entradas y salidas </strong></h5>
+              <div class="row">
+                <hr>
+              </div>
+            </div>
+            <div style="text-align:  left;">
+              <i class='fas fa-file' style='font-size:48px'></i>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-sm-12 col-xl-6">
+      <a href="{%url 'worker_assistence'%}" style="text-decoration: none;">
+        <div class="card text-bg-success mb-3">
+          <div class="card-body">
+            <div class="row">
+              <h5 class="card-title"><strong>
+                Balances de piezas y productos</strong></h5>
+              <div class="row">
+                <hr>
+              </div>
+            </div>
+            <div style="text-align:  left;">
+              <i class='fas fa-list' style='font-size:48px'></i>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="container">
+    
+    <div class="d-grid gap-2 col-2 mx-auto">
+      <a class="btn btn-danger" type="button" href="{%url 'emp_logout'%}">Cerrar sesión</a>
+    </div>
+    <br>
+  </div>
+</div>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
+{% endblock content %}
