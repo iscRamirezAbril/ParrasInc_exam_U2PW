@@ -2,12 +2,103 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="container-fluid">  
   <div class="row">
     <br>
     <h1 class="text-center text-info"><strong>Administración de producción</strong></h1>
   </div>
   <br>
+
+  <div class="row">
+
+    <div class="col-sm-12 col-xl-6">
+      <a href="{%url 'worker_List'%}" style="text-decoration: none;">
+        <div class="card text-bg-info mb-3">
+          <div class="card-body">
+            <div class="row">
+              <h5 class="card-title"><strong>
+                Ordenes por día y semana</strong></h5>
+              <div class="row">
+                <hr>
+              </div>
+            </div>
+            <div style="text-align:  left;">
+              <i class='fas fa-calendar' style='font-size:48px'></i>
+            </div>
+            <div class="row" style="text-align:  right;">
+              <h2 class="text-right"><span>0</span></h2>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-sm-12 col-xl-6">
+      <a href="{%url 'worker_assistence'%}" style="text-decoration: none;">
+        <div class="card text-bg-warning mb-3">
+          <div class="card-body">
+            <div class="row">
+              <h5 class="card-title"><strong>
+                Calidad</strong></h5>
+              <div class="row">
+                <hr>
+              </div>
+            </div>
+            <div style="text-align:  left;">
+              <i class='fas fa-list' style='font-size:48px'></i>
+            </div>
+            <div class="row" style="text-align:  right;">
+              <h2 class="text-right"><span>0</span></h2>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-sm-12 col-xl-6">
+      <a href="{%url 'worker_areaList'%}" style="text-decoration: none;">
+        <div class="card text-bg-primary mb-3">
+          <div class="card-body">
+            <div class="row">
+              <h5 class="card-title"><strong>
+                Reportes de productos</strong></h5>
+              <div class="row">
+                <hr>
+              </div>
+            </div>
+            <div style="text-align:  left;">
+              <i class='fas fa-user' style='font-size:48px'></i>
+            </div>
+            <div class="row" style="text-align:  right;">
+              <h2 class="text-right"><span>0</span></h2>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-sm-12 col-xl-6">
+      <a href="{%url 'worker_areaList'%}" style="text-decoration: none;">
+        <div class="card text-bg-danger mb-3">
+          <div class="card-body">
+            <div class="row">
+              <h5 class="card-title"><strong>
+                Estatus de ordenes</strong></h5>
+              <div class="row">
+                <hr>
+              </div>
+            </div>
+            <div style="text-align:  left;">
+              <i class='fas fa-user' style='font-size:48px'></i>
+            </div>
+            <div class="row" style="text-align:  right;">
+              <h2 class="text-right"><span>0</span></h2>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
 
   <div class="container">
 
@@ -169,7 +260,6 @@
       </div>
       </div>
     {% endfor %}
-
   </div>
     <div class="d-grid gap-2 col-2 mx-auto">
       <a class="btn btn-danger" type="button" href="{%url 'emp_logout'%}">Cerrar sesión</a>
