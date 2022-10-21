@@ -34,7 +34,7 @@ def Employee_login(request):
         
         if user is not None:
             login(request, user)
-            text = 'Welcome back ' + request.user.employee.empFirstName
+            text = '¡Bienvenido ' + request.user.employee.empFirstName + '!'
             messages.success(request, text)
             return redirect('welcomePage')
 

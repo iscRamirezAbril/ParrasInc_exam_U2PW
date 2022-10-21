@@ -2,4 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 def dashboard_Warehouse(request):
-    return render(request, 'Warehouse/dashWarehouse.html')
+    context = {
+        'Almacén' : 'active',
+    }
+    
+    return render(request, 'Warehouse/dashWarehouse.html', context)

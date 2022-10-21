@@ -34,7 +34,7 @@ def dashboard_Production(request):
     areas = Area.objects.all() # Obtiene todas las áreas
     
     context = {
-            'ETIQUETA,': 'active',
+            'Producción': 'active',
             'orders': orders,
             'orders_week': orders_week,
             'orders_day': orders_day,
