@@ -4,7 +4,6 @@ from unicodedata import category
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-
 from django.contrib.auth.forms import UserCreationForm
 from .forms import *
 from django.contrib import messages
@@ -109,32 +108,22 @@ def welcomePage(request):
             saturday=day
         if day.assistDate.weekday() == 6:
             sunday=day
-    
-    # |=| Generamos formulario de Check.  |=|
+
     form = CheckClock()
-    # |=| Validamos que el formulario es  |=|
-    # |=| respectoa un método POST.       |=|
+
     if request.method == 'POST':
         form = CheckClock(request.POST)
-        # |=| Validamos el formuario.     |=|
         if form.is_valid():
             WorkerPk = form.cleaned_data.get('assistWorker')
             
-            # |=| Validamos el formuario. |=|
             Entry = Assistence.objects.filter(assistDate=str(datetime.now().date())).filter(assistWorker = WorkerPk)
-            # |=| Texto para validar      |=|
-            # |=| entrada de datos.       |=|
+
             text = str(Entry)
-            
-            # |=| Validams si existe una  |=|
-            # |=| Entrada previa.         |=|
-            # |=| (Si checo de entrada)   |=|
+
             if Entry.exists():
                 Assistence.objects.filter(assistWorker=WorkerPk.pk).filter(assistDate=str(datetime.now().date())).update(assistOut=datetime.now().strftime('%H:%M:%S'))
                 text = "Se registró correctamente tu hora de salida " + WorkerPk.empFirstName + ' ' + WorkerPk.empLastName + '.'
-            # |=| En caso de que no tenga |=|
-            # |=| registro de entrada se  |=|
-            # |=| generará una entrada.   |=|
+
             else:
                 attendanceReport,created  = Assistence.objects.get_or_create(
                     assistWorker = WorkerPk,
@@ -144,10 +133,7 @@ def welcomePage(request):
                     )
                 text = "Se registró correctamente tu entrada " + WorkerPk.empFirstName + ' ' + WorkerPk.empLastName + '.'
             messages.success(request, text)
-        # |=| Si algo sale mal enviamos   |=|
-        # |=| mensaje de solicitúd de     |=|
-        # |=| ayuda al departamento de    |=|
-        # |=| sistemas.                   |=|
+
         else:
             text = 'Algo salió mal, favor de intentar de nuevo'
             messages.success(request, text)
@@ -170,15 +156,7 @@ def welcomePage(request):
     # Se renderiza el archivo 'stadium_list.html' y se le envía el diccionario creado
     return render(request, 'Employees/welcomePage.html', context )
 
-# |=========================================|
-# |=====|        RELOJ CHECADOR       |=====|
-# |=========================================|
-# |=| Proceso de Ckech in de trabajador.  |=|
-# |=========================================|
 def ClockSystemReport(request):
-    # |=| Conjunto de trabajadores con    |=|
-    # |=| reportes de asistencia.         |=|
-        
     dayToday = date.today()
     dayStart = dayToday - timedelta(days=dayToday.weekday())
     Days = []

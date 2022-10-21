@@ -1,0 +1,126 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <br>
+        <h1 class="text-center text-info"><strong>Reportes de productos</strong></h1>
+      </div>
+      <br>
+
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-secondary mb-0"><strong>Productos por área</strong></h3>
+    </div>
+      <div class="row">
+        {% for area in areas %}
+        <div class="col-sm-6">
+            <div class="d-sm-flex justify-content-between align-items-center mb-4">
+              <h4 class="text-dark mb-0">{{area.areaName}}</h4>
+            </div>
+
+            <div class="card shadow mb-3">
+              <div class="card-body">
+                  <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                      aria-describedby="dataTable_info">
+                      <table class="table my-0" id="dataTable">
+                          <thead>
+                              <tr>
+                                  <th>Producto</th>
+                                  <th>Descripción</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            {% for order in orders %}
+                              {% if order.prodLineMember.lineMemberName.productionLineArea.pk == area.pk %}
+                              <tr>
+                                <td>{{order.prodOrdProduct}}</td>
+                                <td>{{order.prodOrdProduct.productDescription}}</td>
+                              </tr>
+                              {% endif %}
+                            {% endfor %}
+                          </tbody>
+                          <tfoot>
+                              <tr></tr>
+                          </tfoot>
+                      </table>
+                  </div>
+              </div>
+          </div>
+          </div>
+        {% endfor %}
+    </div>
+
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-secondary mb-0"><strong>Productos por producir en el día</strong></h3>
+    </div>
+      <div class="row">
+        <div class="row-sm-6">
+            <div class="card shadow mb-3">
+              <div class="card-body">
+                <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders_day %}
+                        <tr>
+                            <td>{{order.prodOrdProduct}}</td>
+                            <td>{{order.prodOrdProduct.productDescription}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-secondary mb-0"><strong>Productos por producir en la semana </strong></h3>
+    </div>
+</div>
+<div class="row">
+  <div class="row-sm-6">
+      <div class="card shadow mb-3">
+        <div class="card-body">
+          <div class="table-responsive table mt-2" id="dataTable" role="grid"
+          aria-describedby="dataTable_info">
+
+          <table class="table my-0" id="dataTable">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders_week %}
+                <tr>
+                    <td>{{order.prodOrdProduct}}</td>
+                    <td>{{order.prodOrdProduct.productDescription}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr></tr>
+            </tfoot>
+        </table>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+</div>  
+
+{% endblock content %}

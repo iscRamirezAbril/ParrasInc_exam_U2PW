@@ -12,7 +12,7 @@
   <div class="row">
 
     <div class="col-sm-12 col-xl-6">
-      <a href="{%url 'worker_List'%}" style="text-decoration: none;">
+      <a href="{%url 'dayweek_orders'%}" style="text-decoration: none;">
         <div class="card text-bg-info mb-3">
           <div class="card-body">
             <div class="row">
@@ -34,7 +34,7 @@
     </div>
 
     <div class="col-sm-12 col-xl-6">
-      <a href="{%url 'worker_assistence'%}" style="text-decoration: none;">
+      <a href="{%url 'products_quality'%}" style="text-decoration: none;">
         <div class="card text-bg-success mb-3">
           <div class="card-body">
             <div class="row">
@@ -56,7 +56,7 @@
     </div>
 
     <div class="col-sm-12 col-xl-6">
-      <a href="{%url 'worker_areaList'%}" style="text-decoration: none;">
+      <a href="{%url 'products_reports'%}" style="text-decoration: none;">
         <div class="card text-bg-primary mb-3">
           <div class="card-body">
             <div class="row">
@@ -78,7 +78,7 @@
     </div>
 
     <div class="col-sm-12 col-xl-6">
-      <a href="{%url 'worker_areaList'%}" style="text-decoration: none;">
+      <a href="{%url 'orders_status'%}" style="text-decoration: none;">
         <div class="card text-bg-danger mb-3">
           <div class="card-body">
             <div class="row">
@@ -101,166 +101,6 @@
   </div>
 
   <div class="container">
-
-    <div class="row">
-
-
-      <div class="col-sm-12 col-xl-4">
-        <div class="card text-bg-secondary mb-3">
-          <div class="card-body">
-            <div class="row">
-              <h5 class="card-title">
-                {{orders_close.count}}
-                
-                {{orders_close_percentage}}%
-
-
-                {% for order in orders_day %}
-                {{order}}
-                <br>
-                {% endfor %}
-              </h5>
-              <div class="row">
-                <hr>
-              </div>
-            </div>
-            <div style="text-align:  left;">
-              <i class='fas fa-cogs' style='font-size:48px'></i>
-            </div>
-            <div class="row" style="text-align:  right;">
-              <h2 class="text-right"><span>{{orders_day.count}}</span></h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-sm-12 col-xl-4">
-        <div class="card text-bg-secondary mb-3">
-          <div class="card-body">
-            <div class="row">
-              <h5 class="card-title">
-                Productos aprobados y no aprobados por calidad</h5>
-              <div class="row">
-                <hr>
-              </div>
-            </div>
-            <div style="text-align:  left;">
-              <i class='fas fa-cogs' style='font-size:48px'></i>
-            </div>
-            <div class="row" style="text-align:  right;">
-              <h2 class="text-right"><span>0</span></h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-12 col-xl-4">
-        <a href="#" style="text-decoration: none;">
-          <div class="card text-bg-secondary mb-3">
-            <div class="card-body">
-              <div class="row">
-                <h5 class="card-title">
-                  Estatus de ordenes</h5>
-                <div class="row">
-                  <hr>
-                </div>
-              </div>
-              <div style="text-align:  left;">
-                <i class='fas fa-cogs' style='font-size:48px'></i>
-              </div>
-              <div class="row" style="text-align:  right;">
-                <h2 class="text-right"><span>0</span></h2>
-              </div>
-            </div>
-          </div>
-        </a>s
-      </div>
-
-
-    </div>
-
-    <div class="d-sm-flex justify-content-between align-items-center mb-4">
-      <h3 class="text-dark mb-0">Ordenes del día</h3>
-    </div>
-    <div class="row">
-      <div class="card shadow mb-3">
-        <div class="card-body">
-            <div class="table-responsive table mt-2" id="dataTable" role="grid"
-                aria-describedby="dataTable_info">
-                <table class="table my-0" id="dataTable">
-                    <thead>
-                        <tr>
-                            <th>Cantidad</th>
-                            <th>Estatus</th>
-                            <th>Aprobado por Calidad</th>
-                            <th>Producto terminado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      {% for order in orders_day %}
-                        <tr>
-                          <td>{{order.prodOrdQuantity}}</td>
-                          <td>{{order.prodOrdActive}}</td>
-                          <td>{{order.prodOrdQuality}}</td>
-                          <td>{{order.prodOrdDone}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                    <tfoot>
-                        <tr></tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-    </div>
-  </div>
-
-  <div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="text-dark mb-0">Ordenes por área</h3>
-  </div>
-  <div class="row">
-
-    {% for area in areas %}
-    <div class="col-sm-6">
-        <div class="d-sm-flex justify-content-between align-items-center mb-4">
-          <h4 class="text-dark mb-0">{{area.areaName}}</h4>
-        </div>
-        <div class="card shadow mb-3">
-          <div class="card-body">
-              <div class="table-responsive table mt-2" id="dataTable" role="grid"
-                  aria-describedby="dataTable_info">
-                  <table class="table my-0" id="dataTable">
-                      <thead>
-                          <tr>
-                              <th>Cantidad</th>
-                              <th>Estatus</th>
-                              <th>Aprobado por Calidad</th>
-                              <th>Producto terminado</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        {% for order in orders %}
-                          {% if order.prodLineMember.lineMemberName.productionLineArea.pk == area.pk %}
-                          <tr>
-                            <td>{{order.prodOrdQuantity}}</td>
-                            <td>{{order.prodOrdActive}}</td>
-                            <td>{{order.prodOrdQuality}}</td>
-                            <td>{{order.prodOrdDone}}</td>
-                          </tr>
-                          {% endif %}
-                          {% endfor %}
-                      </tbody>
-                      <tfoot>
-                          <tr></tr>
-                      </tfoot>
-                  </table>
-              </div>
-          </div>
-      </div>
-      </div>
-    {% endfor %}
-  </div>
     <div class="d-grid gap-2 col-2 mx-auto">
       <a class="btn btn-danger" type="button" href="{%url 'emp_logout'%}">Cerrar sesión</a>
     </div>

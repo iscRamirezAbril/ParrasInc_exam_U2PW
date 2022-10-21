@@ -5,19 +5,47 @@
 <div class="container-fluid">
     <div class="row">
         <br>
-        <h1 class="text-center text-info"><strong>Estatus de ordenes</strong></h1>
+        <h1 class="text-center text-info"><strong>Órdenes</strong></h1>
     </div>
     <br>
 
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-        <h3 class="mb-0 text-secondary"><strong>Abiertas</strong></h3>
+        <h3 class="mb-0 text-secondary"><strong>Órdenes del día de hoy: {{day}}</strong></h3>
     </div>
     <div class="row">
+
+
+        <div class="col-sm-12 col-xl-6">
+            <div class="card text-bg-primary mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <h5 class="card-title">
+                            {% comment %} {{orders_close.count}} {% endcomment %}
+                            Productos a fabricar el día de hoy: {{today_products}}
+                        </h5>
+
+                        <div class="row">
+                            <hr>
+                        </div>
+                    </div>
+                    <div style="text-align:  left;">
+                        <i class='fas fa-boxes' style='font-size:48px'></i>
+                    </div>
+                    <div class="row" style="text-align:  right;">
+                        <h4 class="text-right"><span>{{today_products_percentage}} % total del estándar (450
+                                productos)</span></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
     <div class="row">
+        <h3 class="card-title">
             {% comment %} {{orders_close.count}} {% endcomment %}
+            Tabla de órdenes diarias
+        </h3>
         <div class="container">
             <div class="row">
                 <div class="card shadow mb-3">
@@ -30,14 +58,16 @@
                                         <th>Producto</th>
                                         <th>Cantidad</th>
                                         <th>Estatus</th>
+                                        <th>Producto terminado</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for order in orders_open %}
+                                    {% for order in orders_day %}
                                     <tr>
                                         <td>{{order.prodOrdProduct}}</td>
                                         <td>{{order.prodOrdQuantity}}</td>
                                         <td>{{order.prodOrdActive}}</td>
+                                        <td>{{order.prodOrdDone}}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -51,8 +81,36 @@
                 </div>
 
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                    <h3 class="mb-0 text-secondary"><strong>Cerradas</strong></h3>
+                    <h3 class="mb-0 text-secondary"><strong>Órdenes de la semana actual</strong></h3>
                 </div>
+                <div class="row">
+
+
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="card text-bg-secondary mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <h5 class="card-title">
+                                        {% comment %} {{orders_close.count}} {% endcomment %}
+                                        Productos a fabricar en la semana: {{week_products}}
+                                    </h5>
+
+                                    <div class="row">
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div style="text-align:  left;">
+                                    <i class='fas fa-boxes' style='font-size:48px'></i>
+                                </div>
+                                <div class="row" style="text-align:  right;">
+                                    <h4 class="text-right"><span>{{orders_week_num}}</span></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
                 <div class="row">
                     <div class="card shadow mb-3">
                         <div class="card-body">
@@ -64,14 +122,16 @@
                                             <th>Producto</th>
                                             <th>Cantidad</th>
                                             <th>Estatus</th>
+                                            <th>Producto terminado</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for order in orders_close %}
+                                        {% for order in orders_week %}
                                         <tr>
                                             <td>{{order.prodOrdProduct}}</td>
                                             <td>{{order.prodOrdQuantity}}</td>
                                             <td>{{order.prodOrdActive}}</td>
+                                            <td>{{order.prodOrdDone}}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
