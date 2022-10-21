@@ -65,8 +65,12 @@ def register(request):
             
             text = 'Please, sign in'
             messages.success(request, text)
+            return redirect('emp_login')
             
-    context = {'form': form}
+    context = {
+        'form': form,
+        'Bienvenida': 'active',
+               }
     return render(request, 'register.html', context)
 
 
@@ -145,7 +149,9 @@ def welcomePage(request):
             text = 'Algo salió mal, favor de intentar de nuevo'
             messages.success(request, text)
 
-    context = {'worker_Assistence': 'active',
+    context = {
+               
+               'Bienvenida': 'active',
                'worker' : request.user.employee,
                'monday' : monday, 
                'tuesday' : tuesday, 
@@ -211,12 +217,18 @@ def ClockSystemReport(request):
 # Para acceder a esta página, se necesita estar logueado
 #@login_required(login_url='emp_login')
 def dashboard(request):
-    return render(request, 'Employees/dashboard.html')
+    context = {
+        'Inicio': 'active',
+    }
+    return render(request, 'Employees/dashboard.html', context)
 
 #@login_required(login_url='emp_login')
 # @admin_only
 def dashboard_Employees(request):
-    return render(request, 'Employees/dashEmployees.html')
+    context = {
+        'Empleados': 'active',
+    }
+    return render(request, 'Employees/dashEmployees.html', context)
 
 
 # def employee_List(request):

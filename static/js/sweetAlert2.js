@@ -20,9 +20,7 @@ function MessageConfirm(tittle, text, ur){
     dog = getRndInteger(0,5)
     Swal.fire({
         title: tittle,
-        html: 
-            '<img class="rounded-circle mb-3 mt-4"src="../' + '../static/img/worker/worker_worker_image' + dog + '.png' + '" width="160" height="160">'+
-        '<h2>' + text + '</h2>',
+        icon: 'success',
         text: text,
         imageWidth: 400,
         cancelButtonText: 'Stay at register',
