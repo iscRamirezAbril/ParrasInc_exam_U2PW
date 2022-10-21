@@ -12,5 +12,13 @@ class ProductionLineAdmin(admin.ModelAdmin):
     list_display = ['id', 'productionLineName', 'productionLineDescription', 'productionLineArea',]
 
 @admin.register(LineMember)
-class ProductionLineAdmin(admin.ModelAdmin):
+class ProdLineMemberAdmin(admin.ModelAdmin):
     list_display = ['id', 'lineMemberName', 'lineMemberWorker',]
+
+@admin.register(ProductOrder)
+class ProductOrdAdmin(admin.ModelAdmin):
+    list_display = ['id', 'prodOrdDate', 'prodOrdQuantity', 'prodOrdActive', 'prodOrdQuality', 'prodOrdDone', 'prodLineMember', 'prodOrdProduct',]
+
+@admin.register(QualityControl)
+class QualityControlAdmin(admin.ModelAdmin):
+    list_display = ['id', 'qcArea', 'qcWorker',]
