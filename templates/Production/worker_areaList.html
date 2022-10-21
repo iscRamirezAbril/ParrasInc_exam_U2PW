@@ -2,6 +2,7 @@
 {% block content %}
 <div class="container-fluid">
 
+    <br>
     <div class="row">
         <br>
         <h1 class="text-center text-info"><strong>Reporte de empleados por área</strong></h1>
@@ -12,7 +13,7 @@
         {% for Area in areasList %}
         <div class="col-md-6 col-xl-6">
             <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                <h3 class="text-dark mb-0">[Area] {{Area.areaName}}</h3>
+                <h3 class="text-dark mb-0 text-secondary">Area: {{Area.areaName}}</h3>
             </div>
             {% comment %} Imprimir todas las líneas de producción {% endcomment %}
             {% for Line in linesList %}
@@ -26,23 +27,22 @@
                         <table class="table my-0" id="dataTable">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
                                     <th>Nombre completo</th>
                                     <th>Puesto</th>
                                     <th>Correo (username)</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    {% for Member in workersList %}
-                                        {% if Member.lineMemberWorker.pk == Line.pk %}
-                                        <td>{{Member.lineMemberWorker.workerEmployee.pk}}</td>
+                                {% for Member in workersList %}
+                                    <tr>
+                                    
+                                        {% if Member.lineMemberName.pk == Line.pk %}
                                         <td>{{Member.lineMemberWorker.workerEmployee.empFirstName}} {{Member.lineMemberWorker.workerEmployee.empLastName}}</td>
                                         <td>{{Member.lineMemberWorker.workerJobPosition.jpName}}</td>
                                         <td>{{Member.lineMemberWorker.workerEmployee.user}}</td>
                                         {% endif %}
-                                    {% endfor %}
-                                </tr>
+                                    </tr>
+                                {% endfor %}
                             </tbody>
                             <tfoot>
                                 <tr></tr>
@@ -51,6 +51,8 @@
                     </div>
                 </div>
             </div>
+            <br>
+
 
             {% endif %}
             {% endfor %}

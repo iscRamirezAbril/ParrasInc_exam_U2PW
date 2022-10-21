@@ -4,7 +4,7 @@
 
     <div class="row">
         <br>
-        <h1 class="text-center">Reporte de horarios de empleados</h1>
+        <h1 class="text-center text-info"><strong>Reporte de horarios establecidos de empleados</strong></h1>
     </div>
     <br>
     <div class="card shadow">
@@ -15,10 +15,9 @@
                         <tr>
                             <th>Nombre(s)</th>
                             <th>Posición de trabajo</th>
-                            <th>Salario</th>
-                            <th>Horario de entrada</th>
-                            <th>Horario de salida</th>
-                            <th>Jornada laboral (total de horas)</th>
+                            <th>Salario semanal</th>
+                            <th>Hora de entrada</th>
+                            <th>Hora de salida</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,7 +28,6 @@
                             <td>{{ worker.workerSalary }}</td>
                             <td>{{ worker.workerEntrance }}</td>
                             <td>{{ worker.workerOut }}</td>
-                            <td>{{ worker.worker_workHours }}</td>
                         </tr>
                         {% endfor %}
                     <tfoot>
@@ -39,5 +37,6 @@
             </div>
         </div>
     </div>
+<br>
 </div>
 {% endblock %}

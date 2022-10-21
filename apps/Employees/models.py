@@ -46,7 +46,6 @@ class Worker(models.Model):
     workerSalary=       models.DecimalField(max_digits=10, decimal_places=2, null = False)
     workerEntrance=     models.TimeField(null = False)
     workerOut=          models.TimeField(null = False)
-    worker_workHours=   models.DecimalField(max_digits=10, decimal_places=2, null = False)
     
     # -----> Foreign Keys <----- #
     # Foreign Key that points to the Employee model

@@ -35,7 +35,7 @@ class ProductOrder(models.Model):
     prodOrdDate =               models.DateField(auto_now=False, auto_now_add=False, null=False)
     prodOrdQuantity =           models.IntegerField(null=False)
     prodOrdActive =             models.BooleanField(default=True)
-    prodOrdQuality =            models.BooleanField(default=True)
+    prodOrdQuality =            models.BooleanField(default=False)
     prodOrdDone =               models.BooleanField(default=False)
     prodLineMember =            models.ForeignKey(LineMember, on_delete=models.CASCADE, null=False)
     prodOrdProduct =            models.ForeignKey(Product, on_delete=models.CASCADE, null=False)

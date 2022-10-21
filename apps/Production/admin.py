@@ -22,3 +22,15 @@ class ProductOrdAdmin(admin.ModelAdmin):
 @admin.register(QualityControl)
 class QualityControlAdmin(admin.ModelAdmin):
     list_display = ['id', 'qcArea', 'qcWorker',]
+
+@admin.register(Product)
+class QualityControlAdmin(admin.ModelAdmin):
+    list_display = ['id', 'productName', 'productDescription',]
+
+@admin.register(Part)
+class QualityControlAdmin(admin.ModelAdmin):
+    list_display = ['id', 'partName', 'partWeight', 'partColor']
+
+@admin.register(PartsQuantity)
+class QualityControlAdmin(admin.ModelAdmin):
+    list_display = ['id', 'pQuantity', 'pProduct', 'pPart']
