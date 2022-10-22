@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">  
+  <div class="row">
+    <br>
+    <h1 class="text-center text-info"><strong>Reporte de entradas y salidas</strong></h1>
+  </div>
+  <br>
+
+  <div class="container">
+    <div class="d-grid gap-2 col-2 mx-auto">
+      <a class="btn btn-danger" type="button" href="{%url 'emp_logout'%}">Cerrar sesión</a>
+    </div>
+    <br>
+  </div>
+</div>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+
+{% endblock content %}
