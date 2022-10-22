@@ -43,7 +43,7 @@ class MaterialSheet(models.Model):
     matSheetPart =              models.ForeignKey(Part, on_delete=models.CASCADE, null=False)
 
     def __str__(self):
-        return "Hoja de salida de material: %s" % (self.exitMaterialSheet)
+        return "Hoja de salida de material: %s" % (self.matSheetDate)
 
 class EntryMaterialSheet(models.Model):
     entryMSDate =          models.DateField(auto_now=False, auto_now_add=False, null=False)

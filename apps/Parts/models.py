@@ -17,11 +17,11 @@ class PartsOrder(models.Model):
     partsOrdPart =            models.ForeignKey(Part, on_delete=models.CASCADE, null=False)
 
     def __str__(self):
-        return "Parte ordenada: %s" % (self.partOrderPart.partName)
+        return "Parte ordenada: %s" % (self.partsOrdPart.partName)
 
 class entryPartOrder(models.Model):
     entryPartOrder =         models.ForeignKey(PartsOrder, on_delete=models.CASCADE, null=False)
-    entryMaterialSheet =     models.CharField(EntryMaterialSheet, max_length=50, null=False)
+    entryMaterialSheet =     models.ForeignKey(EntryMaterialSheet, on_delete=models.CASCADE, null=False)
 
     def __str__(self):
         return "Parte que entró: %s" % (self.partOrderPart.partName)

@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY') # Leemos la variable SECRET_KEY del archivo .e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.32.5', '192.168.32.98']
+ALLOWED_HOSTS = ['192.168.32.5', 'localhost', '127.0.0.1']
 
 #|-------------------------------------- APPLICATION SECTION START ---------------------------------------|
 # |=====| Default Django apps |=====|
@@ -95,23 +95,23 @@ WSGI_APPLICATION = 'Parras_Inc_ExamU2.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # Cadena de conexión a la base de datos de SQL Server
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'mssql', # Cambiamos el motor de la base de datos a mssql
-#         'NAME': config('SQL_DB'), # Nombre de la base de datos
-#         'USER': config('SQL_USER'), # Usuario de la base de datos
-#         'PASSWORD': config('SQL_PASSWORD'), # Contraseña del usuario de la base de datos
-#         'HOST': config('SQL_INSTANCE'), # Nombre del servidor de la base de datos y la instancia
-#         'OPTIONS': {'driver': 'ODBC Driver 17 for SQL Server', }, # Driver de conexión a la base de datos
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mssql', # Cambiamos el motor de la base de datos a mssql
+        'NAME': config('SQL_DB'), # Nombre de la base de datos
+        'USER': config('SQL_USER'), # Usuario de la base de datos
+        'PASSWORD': config('SQL_PASSWORD'), # Contraseña del usuario de la base de datos
+        'HOST': config('SQL_INSTANCE'), # Nombre del servidor de la base de datos y la instancia
+        'OPTIONS': {'driver': 'ODBC Driver 17 for SQL Server', }, # Driver de conexión a la base de datos
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
