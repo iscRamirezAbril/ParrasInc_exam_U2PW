@@ -15,7 +15,7 @@ class Employee(models.Model):
     empLastName=        models.CharField(max_length=50, null = False)
     empBirthDate=       models.DateField(null = True)
     empDateJoined=      models.DateField(auto_now_add=True, null = False)
-    empStatus=          models.BooleanField(default=False)
+    empStatus=          models.BooleanField(default=True)
     empEmail=           models.EmailField(max_length=50, null = False)
     user=               models.OneToOneField(User, on_delete=models.CASCADE, null = False)
     

@@ -24,13 +24,13 @@ class QualityControlAdmin(admin.ModelAdmin):
     list_display = ['id', 'qcArea', 'qcWorker',]
 
 @admin.register(Product)
-class QualityControlAdmin(admin.ModelAdmin):
+class ProductsAdmin(admin.ModelAdmin):
     list_display = ['id', 'productName', 'productDescription',]
 
 @admin.register(Part)
-class QualityControlAdmin(admin.ModelAdmin):
+class PartAdmin(admin.ModelAdmin):
     list_display = ['id', 'partName', 'partWeight', 'partColor']
 
 @admin.register(PartsQuantity)
-class QualityControlAdmin(admin.ModelAdmin):
+class PartsQuantityAdmin(admin.ModelAdmin):
     list_display = ['id', 'pQuantity', 'pProduct', 'pPart']

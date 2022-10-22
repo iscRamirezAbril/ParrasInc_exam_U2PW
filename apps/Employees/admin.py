@@ -2,6 +2,10 @@ from django.contrib import admin
 from .models import *
 
 # Register your models here.
+@admin.register(Employee)
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display = ['id', 'empFirstName', 'empLastName', 'empBirthDate', 'empDateJoined', 'empStatus', 'empEmail', 'user']
+
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ['id', 'deptName']
