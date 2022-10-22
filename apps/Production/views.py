@@ -3,11 +3,13 @@ from apps.Production.models import *
 # Create your views here.
 from datetime import *
 from django.db.models import Sum
+from django.contrib.auth.decorators import login_required
 
 current_week = date.today().isocalendar()[1]
 
 # |===============| ADMINISTRACIÓN DE PRODUCCIÓN |===============| #
 # Lista de empleados por áreas #
+@login_required(login_url='emp_login')
 def worker_Area(request):
     areas = Area.objects.all() # Obtiene todas las áreas
     workers = LineMember.objects.all() # Obtiene todos los empleados
@@ -21,8 +23,8 @@ def worker_Area(request):
     return render(request, 'Production/worker_areaList.html', context)
 
 # Dashboard de producción #
+@login_required(login_url='emp_login')
 def dashboard_Production(request):
-    
     orders = ProductOrder.objects.all() # Obtiene todas las órdenes de producción
     orders_week = ProductOrder.objects.filter(prodOrdDate__week=current_week).distinct() # Obtiene las órdenes de la semana actual
     orders_day = ProductOrder.objects.filter(prodOrdDate=date.today()).distinct() # Obtiene las órdenes del día actual
@@ -40,7 +42,7 @@ def dashboard_Production(request):
     
     return render(request, 'Production/dashProduction.html', context)
 
-#  #
+@login_required(login_url='emp_login')
 def dayweek_orders(request):
     
     orders = ProductOrder.objects.all() # Obtiene todas las órdenes de producción
@@ -93,8 +95,8 @@ def dayweek_orders(request):
     
     return render(request, 'Production/dayweek_orders.html', context)
 
+@login_required(login_url='emp_login')
 def products_reports(request):
-    
     products = Product.objects.all() # Obtiene todos los productos
     orders = ProductOrder.objects.all() # Obtiene todas las órdenes de producción
     areas = Area.objects.all() # Obtiene todas las áreas
@@ -122,6 +124,7 @@ def products_reports(request):
     
     return render(request, 'Production/products_reports.html', context)
 
+@login_required(login_url='emp_login')
 def qualityControl(request):
         qualityTrue = ProductOrder.objects.filter(prodOrdQuality=True).distinct() # Obtiene las órdenes abiertas
         qualityFalse = ProductOrder.objects.filter(prodOrdQuality=False).distinct() # Obtiene las órdenes cerradas
@@ -139,6 +142,7 @@ def qualityControl(request):
 
         return render(request, 'Production/products_quality.html', context)    
 
+@login_required(login_url='emp_login')
 def orders_status(request):
         orders_open = ProductOrder.objects.filter(prodOrdActive=True).distinct() # Obtiene las órdenes abiertas
         orders_close = ProductOrder.objects.filter(prodOrdActive=False).distinct() # Obtiene las órdenes cerradas
